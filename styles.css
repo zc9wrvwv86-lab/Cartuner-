@@ -439,3 +439,33 @@ button:hover {
 .dropdown-item:hover {
   background: rgba(34, 197, 94, 0.22) !important;
 }
+.grid,
+.card,
+.form-card,
+form,
+label {
+  overflow: visible !important;
+}
+
+.form-card {
+  position: relative;
+  z-index: 100;
+}
+
+.results {
+  position: relative;
+  z-index: 1;
+}
+
+.autocomplete {
+  position: relative;
+  z-index: 10000 !important;
+}
+
+.autocomplete:focus-within {
+  z-index: 999999 !important;
+}
+
+.dropdown {
+  z-index: 999999 !important;
+}
