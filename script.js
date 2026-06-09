@@ -141,17 +141,44 @@ const engineOptions = [
   "M177", "M139"
 ];
 
-function fillDatalist(id, options) {
-  const list = document.getElementById(id);
+function setupAutocomplete(inputId, dropdownId, options) {
+  const input = document.getElementById(inputId);
+  const dropdown = document.getElementById(dropdownId);
 
-  list.innerHTML = options
-    .map(option => `<option value="${option}"></option>`)
-    .join("");
+  function renderDropdown() {
+    const value = input.value.toLowerCase();
+
+    const matches = options
+      .filter(option => option.toLowerCase().includes(value))
+      .slice(0, 12);
+
+    dropdown.innerHTML = matches.map(option => `
+      <button type="button">${option}</button>
+    `).join("");
+
+    dropdown.classList.toggle("show", matches.length > 0);
+
+    dropdown.querySelectorAll("button").forEach(button => {
+      button.addEventListener("click", () => {
+        input.value = button.textContent;
+        dropdown.classList.remove("show");
+      });
+    });
+  }
+
+  input.addEventListener("input", renderDropdown);
+  input.addEventListener("focus", renderDropdown);
+
+  document.addEventListener("click", event => {
+    if (!input.parentElement.contains(event.target)) {
+      dropdown.classList.remove("show");
+    }
+  });
 }
 
-fillDatalist("makeOptions", makeOptions);
-fillDatalist("modelOptions", modelOptions);
-fillDatalist("engineOptions", engineOptions);
+setupAutocomplete("make", "makeDropdown", makeOptions);
+setupAutocomplete("model", "modelDropdown", modelOptions);
+setupAutocomplete("engine", "engineDropdown", engineOptions);
 const form = document.getElementById("tuneForm");
 const results = document.getElementById("results");
 const presetsEl = document.getElementById("presets");
