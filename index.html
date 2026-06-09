@@ -3,21 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CarTuner Mod Planner</title>
+  <title>CarTuner AI Mod Planner</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <main class="app">
+    <nav class="nav">
+      <div class="logo">Car<span>Tuner</span></div>
+      <a href="#planner">Build Plan</a>
+    </nav>
+
     <section class="hero">
-      <div>
-        <p class="badge">CarTuner MVP</p>
-        <h1>Build your car tuning plan.</h1>
-        <p>Enter your car, engine, current horsepower, and target horsepower. Get a staged build plan with parts, reliability notes, and estimated difficulty.</p>
+      <div class="hero-text">
+        <p class="badge">AI-style tuning planner</p>
+        <h1>Turn your horsepower goal into a real build list.</h1>
+        <p>
+          Select your car, engine, current power and target power. CarTuner creates a staged mod path with parts, budget range, reliability notes and build difficulty.
+        </p>
+        <a class="hero-btn" href="#planner">Start planning</a>
+      </div>
+
+      <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80" alt="Performance car" />
+        <div class="floating-card">
+          <strong>Stage 2+</strong>
+          <span>Cooling · Fueling · ECU · Drivetrain</span>
+        </div>
       </div>
     </section>
 
-    <section class="grid">
-      <form id="tuneForm" class="card">
+    <section class="stats">
+      <div><strong>20+</strong><span>engine presets</span></div>
+      <div><strong>4</strong><span>build levels</span></div>
+      <div><strong>100%</strong><span>static GitHub Pages ready</span></div>
+    </section>
+
+    <section id="planner" class="grid">
+      <form id="tuneForm" class="card form-card">
         <h2>Your car</h2>
 
         <label>Make
@@ -60,17 +82,19 @@
           </select>
         </label>
 
-        <button type="submit">Generate plan</button>
+        <button type="submit">Generate tuning plan</button>
       </form>
 
       <section id="results" class="card results">
         <h2>Your plan appears here</h2>
-        <p>Use realistic power goals. Big gains require cooling, fueling, drivetrain, braking, tires, and professional calibration.</p>
+        <p>
+          Choose a preset below or enter your own build. Bigger power goals need cooling, fueling, tires, brakes, drivetrain support and professional ECU calibration.
+        </p>
       </section>
     </section>
 
     <section class="card">
-      <h2>Popular presets</h2>
+      <h2>Popular car presets</h2>
       <div id="presets" class="presets"></div>
     </section>
   </main>
