@@ -111,7 +111,47 @@ const presets = [
   { make: "Honda", model: "Civic Type R", engine: "K20", currentHp: 306, targetHp: 400, image: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=700&q=80" },
   { make: "Ford", model: "Mustang GT", engine: "Coyote", currentHp: 460, targetHp: 700, image: "https://images.unsplash.com/photo-1547744152-14d985cb937f?auto=format&fit=crop&w=700&q=80" }
 ];
+const makeOptions = [
+  "BMW", "Audi", "Volkswagen", "Mercedes-AMG",
+  "Toyota", "Nissan", "Honda", "Ford",
+  "Chevrolet", "Dodge", "Subaru", "Mitsubishi",
+  "Porsche"
+];
 
+const modelOptions = [
+  "335i", "340i", "M2", "M3", "M4",
+  "Golf GTI", "Golf R",
+  "S3", "RS3", "S4", "RS5",
+  "A45 AMG", "C63 AMG",
+  "Supra", "GT-R",
+  "Civic Type R",
+  "Mustang GT",
+  "WRX STI",
+  "Evo X"
+];
+
+const engineOptions = [
+  "N54", "N55", "B58", "S55", "S58",
+  "EA888", "EA855",
+  "2JZ", "RB26", "VR38",
+  "K20", "K24",
+  "LS3", "Coyote",
+  "HEMI", "FA20",
+  "EJ257", "4G63",
+  "M177", "M139"
+];
+
+function fillDatalist(id, options) {
+  const list = document.getElementById(id);
+
+  list.innerHTML = options
+    .map(option => `<option value="${option}"></option>`)
+    .join("");
+}
+
+fillDatalist("makeOptions", makeOptions);
+fillDatalist("modelOptions", modelOptions);
+fillDatalist("engineOptions", engineOptions);
 const form = document.getElementById("tuneForm");
 const results = document.getElementById("results");
 const presetsEl = document.getElementById("presets");
