@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CarTuner Mod Planner</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <div>
+        <p class="badge">CarTuner MVP</p>
+        <h1>Build your car tuning plan.</h1>
+        <p>Enter your car, engine, current horsepower, and target horsepower. Get a staged build plan with parts, reliability notes, and estimated difficulty.</p>
+      </div>
+    </section>
+
+    <section class="grid">
+      <form id="tuneForm" class="card">
+        <h2>Your car</h2>
+
+        <label>Make
+          <input id="make" placeholder="BMW, Audi, VW, Toyota..." required />
+        </label>
+
+        <label>Model
+          <input id="model" placeholder="335i, Golf GTI, Supra..." required />
+        </label>
+
+        <label>Engine
+          <input id="engine" placeholder="N54, B58, EA888, 2JZ..." required />
+        </label>
+
+        <div class="row">
+          <label>Current HP
+            <input id="currentHp" type="number" value="250" min="50" required />
+          </label>
+
+          <label>Target HP
+            <input id="targetHp" type="number" value="350" min="60" required />
+          </label>
+        </div>
+
+        <label>Use case
+          <select id="usage">
+            <option value="daily">Daily driver</option>
+            <option value="weekend">Weekend car</option>
+            <option value="track">Closed-course track</option>
+            <option value="show">Show build</option>
+          </select>
+        </label>
+
+        <label>Fuel
+          <select id="fuel">
+            <option value="pump">Pump fuel</option>
+            <option value="premium">Premium fuel</option>
+            <option value="ethanol">Ethanol blend</option>
+            <option value="race">Race fuel / off-road</option>
+          </select>
+        </label>
+
+        <button type="submit">Generate plan</button>
+      </form>
+
+      <section id="results" class="card results">
+        <h2>Your plan appears here</h2>
+        <p>Use realistic power goals. Big gains require cooling, fueling, drivetrain, braking, tires, and professional calibration.</p>
+      </section>
+    </section>
+
+    <section class="card">
+      <h2>Popular presets</h2>
+      <div id="presets" class="presets"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
