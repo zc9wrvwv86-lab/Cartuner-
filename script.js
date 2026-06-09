@@ -145,37 +145,47 @@ function setupAutocomplete(inputId, dropdownId, options) {
   const input = document.getElementById(inputId);
   const dropdown = document.getElementById(dropdownId);
 
-  function renderDropdown() {
-    const value = input.value.toLowerCase();
+  function showOptions() {
+    const value = input.value.toLowerCase().trim();
 
     const matches = options
       .filter(option => option.toLowerCase().includes(value))
-      .slice(0, 12);
+      .slice(0, 20);
 
-    dropdown.innerHTML = matches.map(option => `
-      <button type="button">${option}</button>
-    `).join("");
+    dropdown.innerHTML = "";
 
-    dropdown.classList.toggle("show", matches.length > 0);
+    matches.forEach(option => {
+      const item = document.createElement("div");
+      item.className = "dropdown-item";
+      item.textContent = option;
 
-    dropdown.querySelectorAll("button").forEach(button => {
-      button.addEventListener("click", () => {
-        input.value = button.textContent;
+      item.addEventListener("mousedown", event => {
+        event.preventDefault();
+        input.value = option;
         dropdown.classList.remove("show");
       });
+
+      item.addEventListener("touchstart", event => {
+        event.preventDefault();
+        input.value = option;
+        dropdown.classList.remove("show");
+      });
+
+      dropdown.appendChild(item);
     });
+
+    dropdown.classList.add("show");
   }
 
-  input.addEventListener("input", renderDropdown);
-  input.addEventListener("focus", renderDropdown);
+  input.addEventListener("focus", showOptions);
+  input.addEventListener("input", showOptions);
 
   document.addEventListener("click", event => {
-    if (!input.parentElement.contains(event.target)) {
+    if (!input.closest(".autocomplete").contains(event.target)) {
       dropdown.classList.remove("show");
     }
   });
 }
-
 setupAutocomplete("make", "makeDropdown", makeOptions);
 setupAutocomplete("model", "modelDropdown", modelOptions);
 setupAutocomplete("engine", "engineDropdown", engineOptions);
