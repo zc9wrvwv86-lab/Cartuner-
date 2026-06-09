@@ -42,19 +42,25 @@
       <form id="tuneForm" class="card form-card">
         <h2>Your car</h2>
 
-        <label>Make
-  <input id="make" list="makeOptions" placeholder="BMW, Audi, VW, Toyota..." required />
-  <datalist id="makeOptions"></datalist>
+      <label>Make
+  <div class="autocomplete">
+    <input id="make" placeholder="BMW, Audi, VW, Toyota..." required />
+    <div id="makeDropdown" class="dropdown"></div>
+  </div>
 </label>
 
 <label>Model
-  <input id="model" list="modelOptions" placeholder="335i, Golf GTI, Supra..." required />
-  <datalist id="modelOptions"></datalist>
+  <div class="autocomplete">
+    <input id="model" placeholder="335i, Golf GTI, Supra..." required />
+    <div id="modelDropdown" class="dropdown"></div>
+  </div>
 </label>
 
 <label>Engine
-  <input id="engine" list="engineOptions" placeholder="N54, B58, EA888, 2JZ..." required />
-  <datalist id="engineOptions"></datalist>
+  <div class="autocomplete">
+    <input id="engine" placeholder="N54, B58, EA888, 2JZ..." required />
+    <div id="engineDropdown" class="dropdown"></div>
+  </div>
 </label>
 
         <div class="row">
