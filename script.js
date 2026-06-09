@@ -2,36 +2,114 @@ const engineDatabase = {
   n54: {
     name: "BMW N54",
     safeRange: "400–500 HP with strong supporting mods",
-    commonParts: ["ECU tune", "Intercooler", "Charge pipe", "Downpipes", "High-pressure fuel pump", "Spark plugs", "Oil cooler"]
+    commonParts: ["ECU tune", "Intercooler", "Charge pipe", "Downpipes", "High-pressure fuel pump", "Index 12 injectors check", "Oil cooler"]
+  },
+  n55: {
+    name: "BMW N55",
+    safeRange: "360–450 HP depending on turbo and fuel setup",
+    commonParts: ["ECU tune", "Charge pipe", "Intercooler", "Downpipe", "Spark plugs", "Fuel pump upgrade", "Turbo inlet"]
   },
   b58: {
     name: "BMW B58",
     safeRange: "420–550 HP with proper calibration",
-    commonParts: ["ECU tune", "Downpipe", "Intake", "Intercooler", "Fuel pump", "Transmission tune"]
+    commonParts: ["ECU tune", "Downpipe", "Intake", "High-pressure fuel pump", "Transmission tune", "Heat exchanger"]
+  },
+  s55: {
+    name: "BMW S55",
+    safeRange: "500–650 HP with crank hub and cooling considerations",
+    commonParts: ["ECU tune", "Crank hub inspection", "Downpipes", "Charge cooling", "Spark plugs", "TCU tune"]
   },
   ea888: {
     name: "VW/Audi EA888",
-    safeRange: "300–450 HP depending on turbo and generation",
+    safeRange: "300–450 HP depending on turbo generation",
     commonParts: ["ECU tune", "TCU tune", "Intake", "Downpipe", "Intercooler", "Turbo inlet", "Spark plugs"]
+  },
+  ea855: {
+    name: "Audi 2.5 TFSI EA855",
+    safeRange: "450–600 HP with turbo and fueling support",
+    commonParts: ["ECU tune", "TCU tune", "Intercooler", "Downpipe", "Fueling upgrade", "Turbo inlet", "Spark plugs"]
+  },
+  m177: {
+    name: "Mercedes-AMG M177",
+    safeRange: "600–750 HP with cooling and transmission support",
+    commonParts: ["ECU tune", "CPC/TCU tune", "Downpipes", "Intakes", "Heat exchanger", "Spark plugs"]
+  },
+  m139: {
+    name: "Mercedes-AMG M139",
+    safeRange: "430–520 HP with careful thermal management",
+    commonParts: ["ECU tune", "Intake", "Downpipe", "Intercooler", "Cooling upgrades", "Spark plugs"]
   },
   "2jz": {
     name: "Toyota 2JZ",
     safeRange: "500–700 HP with strong fueling and turbo setup",
     commonParts: ["Turbo kit", "Fuel injectors", "Fuel pump", "Standalone ECU", "Intercooler", "Clutch/transmission support"]
   },
+  b58supra: {
+    name: "Toyota Supra B58",
+    safeRange: "450–600 HP with ECU/fuel support",
+    commonParts: ["ECU tune", "Downpipe", "Intake", "Fuel pump", "Heat exchanger", "Transmission tune"]
+  },
   k20: {
     name: "Honda K20",
-    safeRange: "250–400 HP depending on NA or turbo build",
+    safeRange: "250–400 HP depending on NA or turbo setup",
     commonParts: ["ECU management", "Header or turbo kit", "Fuel injectors", "Fuel pump", "Cooling upgrades", "Clutch"]
+  },
+  k24: {
+    name: "Honda K24",
+    safeRange: "250–450 HP depending on boost and internals",
+    commonParts: ["ECU management", "Turbo kit or header", "Injectors", "Fuel pump", "Clutch", "Cooling upgrades"]
+  },
+  rb26: {
+    name: "Nissan RB26",
+    safeRange: "450–650 HP with oiling and turbo support",
+    commonParts: ["Twin or single turbo upgrade", "Fuel system", "ECU", "Intercooler", "Oil control upgrades", "Clutch"]
+  },
+  vr38: {
+    name: "Nissan VR38",
+    safeRange: "650–900 HP with transmission and fuel support",
+    commonParts: ["ECU tune", "TCM tune", "Fuel injectors", "Fuel pumps", "Intakes", "Downpipes", "Transmission upgrades"]
+  },
+  ls3: {
+    name: "GM LS3",
+    safeRange: "480–650 HP depending on cam or forced induction",
+    commonParts: ["Cam kit", "Headers", "Intake", "ECU tune", "Fuel system", "Clutch or torque converter"]
+  },
+  coyote: {
+    name: "Ford 5.0 Coyote",
+    safeRange: "500–750 HP depending on NA or supercharger build",
+    commonParts: ["ECU tune", "Headers", "Cold air intake", "Supercharger kit", "Fuel injectors", "Oil pump gears"]
+  },
+  hemi: {
+    name: "Dodge 6.4 HEMI",
+    safeRange: "500–700 HP depending on cam or supercharger",
+    commonParts: ["ECU tune", "Headers", "Cam kit", "Fuel system", "Cooling upgrades", "Transmission tune"]
+  },
+  fa20: {
+    name: "Subaru/Toyota FA20",
+    safeRange: "230–350 HP with careful torque and cooling limits",
+    commonParts: ["ECU tune", "Header", "Flex fuel kit", "Oil cooler", "Clutch", "Turbo or supercharger kit"]
+  },
+  ej257: {
+    name: "Subaru EJ257",
+    safeRange: "330–450 HP with reliability-focused support",
+    commonParts: ["ECU tune", "Downpipe", "Fuel pump", "Injectors", "Intercooler", "Air/oil separator", "Cylinder 4 cooling mod"]
+  },
+  4g63: {
+    name: "Mitsubishi 4G63",
+    safeRange: "400–600 HP with turbo and fuel support",
+    commonParts: ["Turbo upgrade", "Fuel injectors", "Fuel pump", "ECU tune", "Intercooler", "Clutch"]
   }
 };
 
 const presets = [
-  { make: "BMW", model: "335i", engine: "N54", currentHp: 300, targetHp: 450 },
-  { make: "BMW", model: "M340i", engine: "B58", currentHp: 382, targetHp: 500 },
-  { make: "VW", model: "Golf GTI", engine: "EA888", currentHp: 230, targetHp: 350 },
-  { make: "Toyota", model: "Supra", engine: "2JZ", currentHp: 320, targetHp: 600 },
-  { make: "Honda", model: "Civic Type R", engine: "K20", currentHp: 306, targetHp: 400 }
+  { make: "BMW", model: "335i", engine: "N54", currentHp: 300, targetHp: 450, image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=700&q=80" },
+  { make: "BMW", model: "M340i", engine: "B58", currentHp: 382, targetHp: 500, image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=700&q=80" },
+  { make: "VW", model: "Golf GTI", engine: "EA888", currentHp: 230, targetHp: 350, image: "https://images.unsplash.com/photo-1606016159991-dfe4f2746ad5?auto=format&fit=crop&w=700&q=80" },
+  { make: "Audi", model: "RS3", engine: "EA855", currentHp: 400, targetHp: 560, image: "https://images.unsplash.com/photo-1606152421802-db97b9c7a11b?auto=format&fit=crop&w=700&q=80" },
+  { make: "Toyota", model: "Supra", engine: "B58", currentHp: 382, targetHp: 550, image: "https://images.unsplash.com/photo-1626668893632-6f3a4466d22f?auto=format&fit=crop&w=700&q=80" },
+  { make: "Nissan", model: "GT-R", engine: "VR38", currentHp: 565, targetHp: 800, image: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=700&q=80" },
+  { make: "Honda", model: "Civic Type R", engine: "K20", currentHp: 306, targetHp: 400, image: "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=700&q=80" },
+  { make: "Ford", model: "Mustang GT", engine: "Coyote", currentHp: 460, targetHp: 700, image: "https://images.unsplash.com/photo-1547744152-14d985cb937f?auto=format&fit=crop&w=700&q=80" }
 ];
 
 const form = document.getElementById("tuneForm");
@@ -39,7 +117,7 @@ const results = document.getElementById("results");
 const presetsEl = document.getElementById("presets");
 
 function normalizeEngine(engine) {
-  return engine.toLowerCase().replace(/\s+/g, "");
+  return engine.toLowerCase().replace(/\s+/g, "").replace(/-/g, "");
 }
 
 function getStage(percentGain) {
@@ -48,7 +126,7 @@ function getStage(percentGain) {
       stage: "Stage 1",
       difficulty: "Low",
       budget: "€500–€1,500",
-      description: "Software-focused build with minor bolt-ons."
+      description: "Software-focused build with basic bolt-ons and conservative reliability goals."
     };
   }
 
@@ -57,7 +135,7 @@ function getStage(percentGain) {
       stage: "Stage 2",
       difficulty: "Medium",
       budget: "€1,500–€4,000",
-      description: "Bolt-on build with improved airflow, cooling, and calibration."
+      description: "Bolt-on build with improved airflow, cooling and professional calibration."
     };
   }
 
@@ -66,7 +144,7 @@ function getStage(percentGain) {
       stage: "Stage 2+",
       difficulty: "High",
       budget: "€4,000–€9,000",
-      description: "Advanced build requiring fuel, cooling, drivetrain, and professional tuning."
+      description: "Advanced build requiring fuel, cooling, drivetrain and monitoring upgrades."
     };
   }
 
@@ -74,23 +152,28 @@ function getStage(percentGain) {
     stage: "Custom Build",
     difficulty: "Very high",
     budget: "€9,000+",
-    description: "Large power increase. Requires engine health checks and expert build planning."
+    description: "Large power increase. Requires expert planning, engine health checks and serious supporting mods."
   };
 }
 
 function supportingMods(percentGain, usage, fuel) {
-  const parts = ["Professional ECU calibration", "Fresh spark plugs", "Full maintenance service", "High-quality tires"];
+  const parts = [
+    "Professional ECU calibration",
+    "Full maintenance service before tuning",
+    "Colder spark plugs where recommended",
+    "High-quality tires"
+  ];
 
-  if (percentGain > 10) parts.push("Performance intake or improved airflow");
-  if (percentGain > 20) parts.push("Intercooler or heat management upgrade");
-  if (percentGain > 30) parts.push("Exhaust flow upgrade where legal");
-  if (percentGain > 35) parts.push("Fuel system upgrade");
-  if (percentGain > 45) parts.push("Clutch or transmission support");
+  if (percentGain > 10) parts.push("Improved intake or airflow path");
+  if (percentGain > 20) parts.push("Intercooler or heat exchanger upgrade");
+  if (percentGain > 30) parts.push("Legal exhaust flow upgrade");
+  if (percentGain > 35) parts.push("Fuel pump and injector review");
+  if (percentGain > 45) parts.push("Clutch, gearbox or transmission tune");
   if (percentGain > 55) parts.push("Brake upgrade and suspension inspection");
-  if (fuel === "ethanol") parts.push("Ethanol-compatible fuel system check");
-  if (fuel === "race") parts.push("Closed-course fuel calibration");
-  if (usage === "daily") parts.push("Conservative torque limits for reliability");
-  if (usage === "track") parts.push("Oil cooling, brake cooling, and fluid upgrades");
+  if (fuel === "ethanol") parts.push("Ethanol sensor and ethanol-safe fuel system check");
+  if (fuel === "race") parts.push("Separate closed-course calibration map");
+  if (usage === "daily") parts.push("Conservative torque limits for daily reliability");
+  if (usage === "track") parts.push("Oil cooling, brake fluid and track pad upgrades");
 
   return parts;
 }
@@ -134,27 +217,27 @@ function generatePlan(data) {
 
     ${engineInfo ? `
       <div class="warning">
-        Known engine: ${engineInfo.name}. Typical safe range: ${engineInfo.safeRange}.
+        Known engine: ${engineInfo.name}. Typical tuning range: ${engineInfo.safeRange}.
       </div>
     ` : `
       <div class="warning">
-        Unknown engine. Treat this as a generic plan and verify parts compatibility.
+        Unknown engine. This is a generic plan. Verify compatibility before buying parts.
       </div>
     `}
 
     <h3>Recommended build path</h3>
     <div class="parts">
-      ${[...parts, ...engineParts].map(part => `
+      ${[...new Set([...parts, ...engineParts])].map(part => `
         <div class="part">
           <strong>${part}</strong>
-          <span>Check compatibility, emissions laws, and professional installation requirements.</span>
+          <span>Check compatibility, local laws, emissions rules and professional installation requirements.</span>
         </div>
       `).join("")}
     </div>
 
-    <h3>Safety notes</h3>
+    <h3>Reliability checklist</h3>
     <p>
-      Get a compression/leakdown test before major upgrades. Use a reputable tuner, monitor AFR/knock/IAT/oil temperature, and keep the car legal for your location.
+      Before major upgrades, do a compression/leakdown test, scan for codes, inspect fluids, monitor knock, AFR, boost, oil temperature and intake temperature.
     </p>
   `;
 }
@@ -177,6 +260,7 @@ presets.forEach(preset => {
   const card = document.createElement("button");
   card.type = "button";
   card.className = "preset";
+  card.style.setProperty("--image", `url("${preset.image}")`);
   card.innerHTML = `
     <strong>${preset.make} ${preset.model}</strong>
     <p>${preset.engine}: ${preset.currentHp} HP → ${preset.targetHp} HP</p>
@@ -188,7 +272,14 @@ presets.forEach(preset => {
     document.getElementById("engine").value = preset.engine;
     document.getElementById("currentHp").value = preset.currentHp;
     document.getElementById("targetHp").value = preset.targetHp;
-    generatePlan({ ...preset, usage: "daily", fuel: "premium" });
+
+    generatePlan({
+      ...preset,
+      usage: "daily",
+      fuel: "premium"
+    });
+
+    document.getElementById("planner").scrollIntoView({ behavior: "smooth" });
   });
 
   presetsEl.appendChild(card);
