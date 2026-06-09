@@ -94,7 +94,7 @@ const engineDatabase = {
     safeRange: "330–450 HP with reliability-focused support",
     commonParts: ["ECU tune", "Downpipe", "Fuel pump", "Injectors", "Intercooler", "Air/oil separator", "Cylinder 4 cooling mod"]
   },
-  4g63: {
+  "4g63": {
     name: "Mitsubishi 4G63",
     safeRange: "400–600 HP with turbo and fuel support",
     commonParts: ["Turbo upgrade", "Fuel injectors", "Fuel pump", "ECU tune", "Intercooler", "Clutch"]
