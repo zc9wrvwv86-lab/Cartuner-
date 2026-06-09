@@ -98,7 +98,7 @@ const engineDatabase = {
     name: "Mitsubishi 4G63",
     safeRange: "400–600 HP with turbo and fuel support",
     commonParts: ["Turbo upgrade", "Fuel injectors", "Fuel pump", "ECU tune", "Intercooler", "Clutch"]
-  }
+  
 };
 
 const presets = [
