@@ -112,22 +112,28 @@ const presets = [
   { make: "Ford", model: "Mustang GT", engine: "Coyote", currentHp: 460, targetHp: 700, image: "https://images.unsplash.com/photo-1547744152-14d985cb937f?auto=format&fit=crop&w=700&q=80" }
 ];
 const makeOptions = [
-  "BMW", "Audi", "Volkswagen", "Mercedes-AMG",
-  "Toyota", "Nissan", "Honda", "Ford",
-  "Chevrolet", "Dodge", "Subaru", "Mitsubishi",
-  "Porsche"
+  "Toyota", "Volkswagen", "BMW", "Mercedes-Benz", "Audi",
+  "Porsche", "Ford", "Chevrolet", "Dodge", "Nissan",
+  "Honda", "Hyundai", "Kia", "Subaru", "Mitsubishi",
+  "Mazda", "Lexus", "Acura", "Infiniti", "Cadillac",
+  "Volvo", "Jaguar", "Land Rover", "Tesla", "BYD"
 ];
 
-const modelOptions = [
-  "335i", "340i", "M2", "M3", "M4",
-  "Golf GTI", "Golf R",
-  "S3", "RS3", "S4", "RS5",
-  "A45 AMG", "C63 AMG",
-  "Supra", "GT-R",
-  "Civic Type R",
-  "Mustang GT",
-  "WRX STI",
-  "Evo X"
+const engineOptions = [
+  "N54", "N55", "B48", "B58", "S55", "S58", "S63",
+  "EA113", "EA888", "EA839", "EA855", "EA825",
+  "M133", "M139", "M156", "M157", "M177", "M178", "OM606",
+  "2JZ-GTE", "1JZ-GTE", "7M-GTE", "3S-GTE", "4A-GE", "2GR-FE", "G16E-GTS",
+  "RB20DET", "RB25DET", "RB26DETT", "SR20DET", "VQ35DE", "VQ37VHR", "VR30DDTT", "VR38DETT",
+  "K20", "K20C1", "K24", "B16", "B18", "F20C", "J35",
+  "LS1", "LS2", "LS3", "LS7", "LT1", "LT2", "LT4", "L99",
+  "Coyote 5.0", "EcoBoost 2.3", "EcoBoost 3.5", "Voodoo 5.2", "Predator 5.2",
+  "HEMI 5.7", "HEMI 6.4", "Hellcat 6.2",
+  "EJ205", "EJ207", "EJ255", "EJ257", "FA20", "FA24",
+  "4G63", "4B11T", "6G72TT",
+  "13B-REW", "13B-MSP", "MZR DISI",
+  "Theta II", "Lambda II", "Smartstream G1.6T",
+  "Tesla Dual Motor", "Tesla Plaid Tri Motor", "BYD Blade EV"
 ];
 
 const engineOptions = [
@@ -235,24 +241,85 @@ function getStage(percentGain) {
 
 function supportingMods(percentGain, usage, fuel) {
   const parts = [
-    "Professional ECU calibration",
-    "Full maintenance service before tuning",
-    "Colder spark plugs where recommended",
-    "High-quality tires"
+    "Pre-build inspection: compression test, leakdown test, scan for codes",
+    "Fresh oil, filters, spark plugs and ignition health check",
+    "Professional ECU calibration from a reputable tuner",
+    "Data logging: boost, AFR/lambda, knock, intake temperature and oil temperature",
+    "High-quality performance tires matched to the power goal"
   ];
 
-  if (percentGain > 10) parts.push("Improved intake or airflow path");
-  if (percentGain > 20) parts.push("Intercooler or heat exchanger upgrade");
-  if (percentGain > 30) parts.push("Legal exhaust flow upgrade");
-  if (percentGain > 35) parts.push("Fuel pump and injector review");
-  if (percentGain > 45) parts.push("Clutch, gearbox or transmission tune");
-  if (percentGain > 55) parts.push("Brake upgrade and suspension inspection");
-  if (fuel === "ethanol") parts.push("Ethanol sensor and ethanol-safe fuel system check");
-  if (fuel === "race") parts.push("Separate closed-course calibration map");
-  if (usage === "daily") parts.push("Conservative torque limits for daily reliability");
-  if (usage === "track") parts.push("Oil cooling, brake fluid and track pad upgrades");
+  if (percentGain > 5) {
+    parts.push("Panel filter or intake system if legal in your region");
+    parts.push("Baseline dyno run before modifications");
+  }
+
+  if (percentGain > 10) {
+    parts.push("Stage 1 ECU tune with conservative torque limits");
+    parts.push("Colder spark plugs where recommended by the tuner");
+  }
+
+  if (percentGain > 20) {
+    parts.push("Intercooler or heat exchanger upgrade");
+    parts.push("Charge pipes, boost hoses and clamps inspection");
+    parts.push("Transmission/TCU tune where supported");
+  }
+
+  if (percentGain > 30) {
+    parts.push("Emissions-compliant exhaust flow upgrade");
+    parts.push("Fuel pump review or fuel system upgrade");
+    parts.push("Brake pads, brake fluid and rotor inspection");
+  }
+
+  if (percentGain > 40) {
+    parts.push("Upgraded fuel injectors where required");
+    parts.push("Turbo inlet, intake manifold or throttle-body review");
+    parts.push("Engine and gearbox mounts inspection");
+  }
+
+  if (percentGain > 55) {
+    parts.push("Turbocharger, supercharger or hybrid turbo upgrade");
+    parts.push("Clutch, torque converter or gearbox upgrade");
+    parts.push("Limited-slip differential and axle/driveshaft inspection");
+    parts.push("Oil cooler or upgraded radiator");
+  }
+
+  if (percentGain > 75) {
+    parts.push("Built engine planning: rods, pistons, bearings and head studs");
+    parts.push("Standalone ECU or advanced engine management review");
+    parts.push("Professional custom dyno calibration");
+    parts.push("Chassis, suspension and safety inspection");
+  }
+
+  if (fuel === "ethanol") {
+    parts.push("Ethanol content sensor");
+    parts.push("Ethanol-safe fuel lines, pump and injector compatibility check");
+    parts.push("Flex-fuel calibration");
+  }
+
+  if (fuel === "race") {
+    parts.push("Closed-course calibration map only");
+    parts.push("Fuel-specific spark, boost and safety limit setup");
+  }
+
+  if (usage === "daily") {
+    parts.push("Daily reliability setup: conservative boost, torque and temperature limits");
+  }
+
+  if (usage === "weekend") {
+    parts.push("Weekend setup: stronger cooling and wider performance tires");
+  }
+
+  if (usage === "track") {
+    parts.push("Track setup: oil cooling, brake cooling, track pads and high-temp brake fluid");
+    parts.push("Catch can or air/oil separator where suitable");
+  }
+
+  if (usage === "show") {
+    parts.push("Show build setup: visual engine bay parts, exhaust sound, wheels and stance");
+  }
 
   return parts;
+}
 }
 
 function generatePlan(data) {
