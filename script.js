@@ -285,6 +285,36 @@ function normalizeEngine(engine) {
   return engine.toLowerCase().replace(/\s+/g, "").replace(/-/g, "");
 }
 
+function normalizeText(value) {
+  return value.toLowerCase().replace(/\s+/g, "").replace(/-/g, "");
+}
+
+function autoFillFactoryHp() {
+  const make = document.getElementById("make").value.trim();
+  const model = document.getElementById("model").value.trim();
+  const engine = document.getElementById("engine").value.trim();
+  const currentHpInput = document.getElementById("currentHp");
+
+  if (!make || !model || !engine) return;
+
+  const match = factoryHpDatabase.find(car =>
+    normalizeText(car.make) === normalizeText(make) &&
+    normalizeText(car.model) === normalizeText(model) &&
+    normalizeText(car.engine) === normalizeText(engine)
+  );
+
+  if (match) {
+    currentHpInput.value = match.hp;
+  }
+}
+
+["make", "model", "engine"].forEach(id => {
+  document.getElementById(id).addEventListener("input", autoFillFactoryHp);
+  document.getElementById(id).addEventListener("change", autoFillFactoryHp);
+});
+
+function getStage(percentGain) {
+
 function getStage(percentGain) {
   if (percentGain <= 15) {
     return {
