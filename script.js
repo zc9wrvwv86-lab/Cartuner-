@@ -153,6 +153,78 @@ const engineOptions = [
   "13B-REW", "13B-MSP", "MZR DISI",
   "Theta II", "Lambda II", "Smartstream G1.6T",
   "Tesla Dual Motor", "Tesla Plaid Tri Motor", "BYD Blade EV"
+];const factoryHpDatabase = [
+  { make: "BMW", model: "335i", engine: "N54", hp: 300 },
+  { make: "BMW", model: "340i", engine: "B58", hp: 320 },
+  { make: "BMW", model: "M340i", engine: "B58", hp: 382 },
+  { make: "BMW", model: "M2", engine: "S55", hp: 405 },
+  { make: "BMW", model: "M3", engine: "S58", hp: 473 },
+  { make: "BMW", model: "M4", engine: "S58", hp: 473 },
+
+  { make: "Toyota", model: "Supra", engine: "B58", hp: 382 },
+  { make: "Toyota", model: "GR86", engine: "FA24", hp: 228 },
+  { make: "Toyota", model: "GR Corolla", engine: "G16E-GTS", hp: 300 },
+
+  { make: "Volkswagen", model: "Golf GTI", engine: "EA888", hp: 241 },
+  { make: "Volkswagen", model: "Golf R", engine: "EA888", hp: 315 },
+  { make: "Volkswagen", model: "Jetta GLI", engine: "EA888", hp: 228 },
+
+  { make: "Audi", model: "S3", engine: "EA888", hp: 306 },
+  { make: "Audi", model: "RS3", engine: "EA855", hp: 401 },
+  { make: "Audi", model: "S4", engine: "EA839", hp: 349 },
+  { make: "Audi", model: "RS5", engine: "EA839", hp: 444 },
+  { make: "Audi", model: "TT RS", engine: "EA855", hp: 394 },
+
+  { make: "Mercedes-Benz", model: "A45 AMG", engine: "M139", hp: 416 },
+  { make: "Mercedes-Benz", model: "C43 AMG", engine: "M139", hp: 402 },
+  { make: "Mercedes-Benz", model: "C63 AMG", engine: "M177", hp: 503 },
+  { make: "Mercedes-Benz", model: "E63 AMG", engine: "M177", hp: 603 },
+
+  { make: "Porsche", model: "911", engine: "Flat-6 Turbo", hp: 379 },
+  { make: "Porsche", model: "718 Cayman", engine: "Flat-4 Turbo", hp: 300 },
+  { make: "Porsche", model: "Panamera", engine: "V6 Turbo", hp: 325 },
+
+  { make: "Ford", model: "Mustang GT", engine: "Coyote 5.0", hp: 460 },
+  { make: "Ford", model: "Mustang EcoBoost", engine: "EcoBoost 2.3", hp: 310 },
+  { make: "Ford", model: "Focus ST", engine: "EcoBoost 2.3", hp: 252 },
+  { make: "Ford", model: "Focus RS", engine: "EcoBoost 2.3", hp: 350 },
+
+  { make: "Chevrolet", model: "Camaro SS", engine: "LT1", hp: 455 },
+  { make: "Chevrolet", model: "Camaro ZL1", engine: "LT4", hp: 650 },
+  { make: "Chevrolet", model: "Corvette C7", engine: "LT1", hp: 455 },
+  { make: "Chevrolet", model: "Corvette C8", engine: "LT2", hp: 495 },
+
+  { make: "Dodge", model: "Challenger R/T", engine: "HEMI 5.7", hp: 375 },
+  { make: "Dodge", model: "Challenger Scat Pack", engine: "HEMI 6.4", hp: 485 },
+  { make: "Dodge", model: "Challenger Hellcat", engine: "Hellcat 6.2", hp: 717 },
+  { make: "Dodge", model: "Charger Hellcat", engine: "Hellcat 6.2", hp: 707 },
+
+  { make: "Nissan", model: "GT-R", engine: "VR38DETT", hp: 565 },
+  { make: "Nissan", model: "370Z", engine: "VQ37VHR", hp: 332 },
+  { make: "Nissan", model: "Z", engine: "VR30DDTT", hp: 400 },
+
+  { make: "Honda", model: "Civic Type R", engine: "K20C1", hp: 306 },
+  { make: "Honda", model: "Civic Si", engine: "L15B7", hp: 200 },
+  { make: "Honda", model: "S2000", engine: "F20C", hp: 240 },
+
+  { make: "Hyundai", model: "Elantra N", engine: "Theta II", hp: 276 },
+  { make: "Hyundai", model: "i30 N", engine: "Theta II", hp: 276 },
+  { make: "Kia", model: "Stinger GT", engine: "Lambda II", hp: 368 },
+
+  { make: "Subaru", model: "WRX", engine: "FA24", hp: 271 },
+  { make: "Subaru", model: "WRX STI", engine: "EJ257", hp: 310 },
+  { make: "Subaru", model: "BRZ", engine: "FA24", hp: 228 },
+
+  { make: "Mitsubishi", model: "Evo X", engine: "4B11T", hp: 291 },
+  { make: "Mitsubishi", model: "Evo IX", engine: "4G63", hp: 286 },
+
+  { make: "Mazda", model: "MX-5 Miata", engine: "Skyactiv-G 2.0", hp: 181 },
+  { make: "Mazda", model: "RX-7", engine: "13B-REW", hp: 276 },
+  { make: "Mazda", model: "Mazdaspeed3", engine: "MZR DISI", hp: 263 },
+
+  { make: "Tesla", model: "Model 3 Performance", engine: "Tesla Dual Motor", hp: 450 },
+  { make: "Tesla", model: "Model S Plaid", engine: "Tesla Plaid Tri Motor", hp: 1020 },
+  { make: "Tesla", model: "Model Y Performance", engine: "Tesla Dual Motor", hp: 456 }
 ];
 
 
