@@ -118,6 +118,26 @@ const makeOptions = [
   "Volvo", "Jaguar", "Land Rover", "Tesla", "BYD"
 ];
 
+const modelOptions = [
+  "Supra", "GR86", "GR Corolla", "Yaris GR", "IS 350", "IS 500", "RC F",
+  "Golf GTI", "Golf R", "Arteon", "Jetta GLI", "Polo GTI",
+  "335i", "340i", "M2", "M3", "M4", "M5", "M140i", "M240i", "M340i",
+  "A3", "S3", "RS3", "S4", "RS4", "RS5", "RS6", "TT RS", "R8",
+  "A45 AMG", "C43 AMG", "C63 AMG", "E63 AMG", "GT 63 AMG",
+  "911", "718 Cayman", "718 Boxster", "Panamera", "Macan", "Cayenne",
+  "Mustang GT", "Mustang EcoBoost", "Focus ST", "Focus RS", "Fiesta ST", "F-150",
+  "Camaro SS", "Camaro ZL1", "Corvette C6", "Corvette C7", "Corvette C8",
+  "Challenger R/T", "Challenger Scat Pack", "Challenger Hellcat", "Charger Hellcat",
+  "GT-R", "370Z", "350Z", "Z", "Silvia", "Skyline",
+  "Civic Si", "Civic Type R", "Integra Type S", "S2000", "NSX",
+  "Elantra N", "i30 N", "Veloster N", "Genesis G70", "Stinger GT",
+  "WRX", "WRX STI", "BRZ", "Forester XT", "Legacy GT",
+  "Evo VIII", "Evo IX", "Evo X", "Eclipse GSX", "3000GT VR-4",
+  "MX-5 Miata", "RX-7", "RX-8", "Mazdaspeed3", "Mazdaspeed6",
+  "Model 3 Performance", "Model S Plaid", "Model Y Performance",
+  "BYD Seal", "BYD Han", "BYD Dolphin", "BYD Atto 3"
+];
+
 const engineOptions = [
   "N54", "N55", "B48", "B58", "S55", "S58", "S63",
   "EA113", "EA888", "EA839", "EA855", "EA825",
