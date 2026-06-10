@@ -311,7 +311,7 @@ function supportingMods(percentGain, usage, fuel) {
 
   return parts;
 }
-}
+
 
 function generatePlan(data) {
   const gain = data.targetHp - data.currentHp;
