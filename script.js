@@ -477,9 +477,7 @@ function generatePlan(data) {
 form.addEventListener("submit", event => {
   event.preventDefault();
 
-  form.addEventListener("submit", event => {
-  event.preventDefault();
-
+  
   generatePlan({
     make: document.getElementById("make").value.trim(),
     model: document.getElementById("model").value.trim(),
