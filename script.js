@@ -331,7 +331,85 @@ function supportingMods(percentGain, usage, fuel) {
   return parts;
 }
 
+const modVisuals = {
+  exhaust: {
+    image: "https://images.unsplash.com/photo-1632823471565-1ecdf5c2d81f?auto=format&fit=crop&w=1200&q=80",
+    title: "Exhaust System",
+    text: "An exhaust upgrade can improve flow, sound and heat control. Choose emissions-compliant parts for road use."
+  },
+  intercooler: {
+    image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1200&q=80",
+    title: "Intercooler / Heat Exchanger",
+    text: "Cooling upgrades help reduce intake temperatures and keep power more consistent under load."
+  },
+  intake: {
+    image: "https://images.unsplash.com/photo-1600661653561-629509216228?auto=format&fit=crop&w=1200&q=80",
+    title: "Intake System",
+    text: "An intake can improve airflow and sound, but it should be matched with proper calibration and heat shielding."
+  },
+  turbo: {
+    image: "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=1200&q=80",
+    title: "Turbo / Supercharger Upgrade",
+    text: "Forced-induction upgrades can create large power gains, but require fuel, cooling, drivetrain and tuning support."
+  },
+  fuel: {
+    image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80",
+    title: "Fuel System Upgrade",
+    text: "Fuel pumps, injectors and ethanol-compatible parts help keep the engine supplied safely at higher power."
+  },
+  brakes: {
+    image: "https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?auto=format&fit=crop&w=1200&q=80",
+    title: "Brake Upgrade",
+    text: "More power needs better stopping power. Pads, fluid, rotors and cooling are important for spirited or track use."
+  },
+  tune: {
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+    title: "ECU / TCU Calibration",
+    text: "A professional calibration controls boost, fueling, ignition, torque and safety limits."
+  },
+  drivetrain: {
+    image: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1200&q=80",
+    title: "Drivetrain Support",
+    text: "Clutch, gearbox, differential, axles and mounts should be checked when torque increases."
+  },
+  default: {
+    image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80",
+    title: "Performance Part",
+    text: "This part should be checked for fitment, legal use, reliability and compatibility with the full build."
+  }
+};
 
+function getModVisual(part) {
+  const name = part.toLowerCase();
+
+  if (name.includes("exhaust") || name.includes("downpipe") || name.includes("header")) return modVisuals.exhaust;
+  if (name.includes("intercooler") || name.includes("heat exchanger") || name.includes("cooling") || name.includes("radiator")) return modVisuals.intercooler;
+  if (name.includes("intake") || name.includes("airflow") || name.includes("inlet")) return modVisuals.intake;
+  if (name.includes("turbo") || name.includes("supercharger")) return modVisuals.turbo;
+  if (name.includes("fuel") || name.includes("injector") || name.includes("ethanol") || name.includes("pump")) return modVisuals.fuel;
+  if (name.includes("brake") || name.includes("tire") || name.includes("suspension")) return modVisuals.brakes;
+  if (name.includes("ecu") || name.includes("tune") || name.includes("calibration") || name.includes("dyno")) return modVisuals.tune;
+  if (name.includes("clutch") || name.includes("gearbox") || name.includes("transmission") || name.includes("drivetrain") || name.includes("differential")) return modVisuals.drivetrain;
+
+  return modVisuals.default;
+}
+
+function openModModal(part) {
+  const visual = getModVisual(part);
+
+  document.getElementById("modalImage").src = visual.image;
+  document.getElementById("modalTitle").textContent = visual.title;
+  document.getElementById("modalText").textContent = `${part}: ${visual.text}`;
+  document.getElementById("modModal").classList.add("show");
+}
+
+function setupModModalClicks() {
+  document.querySelectorAll(".part").forEach(card => {
+    card.addEventListener("click", () => {
+      openModModal(card.dataset.part);
+    });
+  });
+}
 function generatePlan(data) {
   const gain = data.targetHp - data.currentHp;
   const percentGain = Math.round((gain / data.currentHp) * 100);
