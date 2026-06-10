@@ -136,16 +136,7 @@ const engineOptions = [
   "Tesla Dual Motor", "Tesla Plaid Tri Motor", "BYD Blade EV"
 ];
 
-const engineOptions = [
-  "N54", "N55", "B58", "S55", "S58",
-  "EA888", "EA855",
-  "2JZ", "RB26", "VR38",
-  "K20", "K24",
-  "LS3", "Coyote",
-  "HEMI", "FA20",
-  "EJ257", "4G63",
-  "M177", "M139"
-];
+
 
 function setupAutocomplete(inputId, dropdownId, options) {
   const input = document.getElementById(inputId);
