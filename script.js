@@ -471,7 +471,7 @@ function generatePlan(data) {
     <p>
       Before major upgrades, do a compression/leakdown test, scan for codes, inspect fluids, monitor knock, AFR, boost, oil temperature and intake temperature.
     </p>
-  `;
+  `;  setupModModalClicks();
 }
 
 form.addEventListener("submit", event => {
