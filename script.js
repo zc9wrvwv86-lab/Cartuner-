@@ -250,13 +250,15 @@ function setupAutocomplete(inputId, dropdownId, options) {
       item.addEventListener("mousedown", event => {
         event.preventDefault();
         input.value = option;
-        dropdown.classList.remove("show");
+input.dispatchEvent(new Event("input", { bubbles: true }));
+dropdown.classList.remove("show");
       });
 
       item.addEventListener("touchstart", event => {
         event.preventDefault();
         input.value = option;
-        dropdown.classList.remove("show");
+input.dispatchEvent(new Event("input", { bubbles: true }));
+dropdown.classList.remove("show");
       });
 
       dropdown.appendChild(item);
