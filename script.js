@@ -458,14 +458,14 @@ function generatePlan(data) {
     `}
 
     <h3>Recommended build path</h3>
-    <div class="parts">
-      ${[...new Set([...parts, ...engineParts])].map(part => `
-        <div class="part">
-          <strong>${part}</strong>
-          <span>Check compatibility, local laws, emissions rules and professional installation requirements.</span>
-        </div>
-      `).join("")}
-    </div>
+<div class="parts">
+  ${[...new Set([...parts, ...engineParts])].map(part => `
+    <button class="part" type="button" data-part="${part.replace(/"/g, "&quot;")}">
+      <strong>${part}</strong>
+      <span>Tap to view image, explanation and fitment notes.</span>
+    </button>
+  `).join("")}
+</div>
 
     <h3>Reliability checklist</h3>
     <p>
@@ -485,7 +485,9 @@ form.addEventListener("submit", event => {
     targetHp: Number(document.getElementById("targetHp").value),
     usage: document.getElementById("usage").value,
     fuel: document.getElementById("fuel").value
-  });
+  })  `;
+
+  setupModModalClicks();
 });
 
 presets.forEach(preset => {
