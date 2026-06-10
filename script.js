@@ -94,13 +94,12 @@ const engineDatabase = {
     safeRange: "330–450 HP with reliability-focused support",
     commonParts: ["ECU tune", "Downpipe", "Fuel pump", "Injectors", "Intercooler", "Air/oil separator", "Cylinder 4 cooling mod"]
   },
-  "4g63": {
+   "4g63": {
     name: "Mitsubishi 4G63",
     safeRange: "400–600 HP with turbo and fuel support",
     commonParts: ["Turbo upgrade", "Fuel injectors", "Fuel pump", "ECU tune", "Intercooler", "Clutch"]
-  
+  }
 };
-
 const presets = [
   { make: "BMW", model: "335i", engine: "N54", currentHp: 300, targetHp: 450, image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=700&q=80" },
   { make: "BMW", model: "M340i", engine: "B58", currentHp: 382, targetHp: 500, image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=700&q=80" },
