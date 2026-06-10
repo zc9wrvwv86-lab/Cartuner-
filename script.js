@@ -477,6 +477,9 @@ function generatePlan(data) {
 form.addEventListener("submit", event => {
   event.preventDefault();
 
+  form.addEventListener("submit", event => {
+  event.preventDefault();
+
   generatePlan({
     make: document.getElementById("make").value.trim(),
     model: document.getElementById("model").value.trim(),
@@ -485,9 +488,17 @@ form.addEventListener("submit", event => {
     targetHp: Number(document.getElementById("targetHp").value),
     usage: document.getElementById("usage").value,
     fuel: document.getElementById("fuel").value
-  })  `;
+  });
+});
 
-  setupModModalClicks();
+document.getElementById("closeModal").addEventListener("click", () => {
+  document.getElementById("modModal").classList.remove("show");
+});
+
+document.getElementById("modModal").addEventListener("click", event => {
+  if (event.target.id === "modModal") {
+    document.getElementById("modModal").classList.remove("show");
+  }
 });
 
 presets.forEach(preset => {
