@@ -153,7 +153,8 @@ const engineOptions = [
   "13B-REW", "13B-MSP", "MZR DISI",
   "Theta II", "Lambda II", "Smartstream G1.6T",
   "Tesla Dual Motor", "Tesla Plaid Tri Motor", "BYD Blade EV"
-];const factoryHpDatabase = [
+];
+const factoryHpDatabase = [
   { make: "BMW", model: "335i", engine: "N54", hp: 300 },
   { make: "BMW", model: "340i", engine: "B58", hp: 320 },
   { make: "BMW", model: "M340i", engine: "B58", hp: 382 },
@@ -315,7 +316,7 @@ function autoFillFactoryHp() {
   document.getElementById(id).addEventListener("change", autoFillFactoryHp);
 });
 
-function getStage(percentGain) {
+
 
 function getStage(percentGain) {
   if (percentGain <= 15) {
