@@ -1,10 +1,12 @@
 const cars = [
   { make: "BMW", model: "M340i", engine: "B58", hp: 382, img: "https://commons.wikimedia.org/wiki/Special:FilePath/2020_BMW_M340i_xDrive_in_Black_Sapphire_Metallic,_rear_left.jpg" },
   { make: "Toyota", model: "GR Supra", engine: "B58", hp: 382, img: "https://commons.wikimedia.org/wiki/Special:FilePath/2020_Toyota_GR_Supra_(United_States).png" },
+  { make: "Volkswagen", model: "Golf GTI", engine: "EA888", hp: 241, img: "https://images.unsplash.com/photo-1606016159991-dfe4f2746ad5?auto=format&fit=crop&w=1000&q=80" },
+  { make: "Audi", model: "RS3", engine: "EA855", hp: 401, img: "https://images.unsplash.com/photo-1606152421802-db97b9c7a11b?auto=format&fit=crop&w=1000&q=80" },
   { make: "Nissan", model: "GT-R", engine: "VR38DETT", hp: 565, img: "https://commons.wikimedia.org/wiki/Special:FilePath/2018_Nissan_GT-R_Premium_in_Super_Silver,_Front_Right,_10-11-2022.jpg" },
   { make: "Honda", model: "Civic Type R", engine: "K20C1", hp: 306, img: "https://commons.wikimedia.org/wiki/Special:FilePath/2018_Honda_Civic_GT_Type_R_VTEC_2.0_Front.jpg" },
   { make: "Ford", model: "Mustang GT", engine: "Coyote 5.0", hp: 460, img: "https://commons.wikimedia.org/wiki/Special:FilePath/2019_Ford_Mustang_GT_5.0_facelift.jpg" },
-  { make: "Tesla", model: "Model 3 Performance", engine: "Dual Motor EV", hp: 450, img: "https://commons.wikimedia.org/wiki/Special:FilePath/Tesla_Model_3_Performance_AWD_IMG_5678.jpg", ev: true }
+  { make: "Tesla", model: "Model 3 Performance", engine: "Dual Motor EV", hp: 450, img: "https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1000&q=80", ev: true }
 ];
 
 const stepsIce = [
@@ -25,13 +27,8 @@ const stepsEv = [
 ];
 
 function norm(value) { return String(value || "").toLowerCase().replace(/[^a-z0-9]/g, ""); }
-function fallback(img) { img.onerror = () => { img.src = "https://commons.wikimedia.org/wiki/Special:FilePath/2019_Ford_Mustang_GT_5.0_facelift.jpg"; }; }
-
-function pickCar() {
-  const p = new URLSearchParams(location.search);
-  return cars.find(c => norm(c.make) === norm(p.get("make")) && norm(c.model) === norm(p.get("model"))) ||
-    cars.find(c => norm(c.engine) === norm(p.get("engine"))) || cars[0];
-}
+function fallback(img) { img.onerror = () => { img.src = "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1000&q=80"; }; }
+function pickCar() { const p = new URLSearchParams(location.search); return cars.find(c => norm(c.make) === norm(p.get("make")) && norm(c.model) === norm(p.get("model"))) || cars.find(c => norm(c.engine) === norm(p.get("engine"))) || cars[0]; }
 
 function render() {
   const app = document.getElementById("roadmapApp");
@@ -39,17 +36,7 @@ function render() {
   const car = pickCar();
   const target = Number(p.get("targetHp")) || car.hp + 100;
   const steps = car.ev ? stepsEv : stepsIce;
-
-  app.innerHTML = `
-    <section class="road-hero">
-      <div><p class="badge">Visual roadmap</p><h1>${car.make} ${car.model}</h1><p>${car.engine} · Base ${car.hp} HP → Target ${target} HP</p><a class="hero-btn" href="index.html#planner">Back to planner</a></div>
-      <img src="${car.img}" alt="${car.make} ${car.model}">
-    </section>
-    <section class="road-track">
-      ${steps.map((s, i) => `<article class="road-step" style="--step:${i}"><div class="road-pin">${i + 1}</div><div class="road-card"><span>Step ${i + 1}</span><h2>${s[0]}</h2><p>${s[1]}</p></div></article>`).join("")}
-    </section>
-    <section class="road-warning">Always verify exact fitment, local rules and professional installation requirements.</section>
-  `;
+  app.innerHTML = `<section class="road-hero"><div><p class="badge">Visual roadmap</p><h1>${car.make} ${car.model}</h1><p>${car.engine} · Base ${car.hp} HP → Target ${target} HP</p><a class="hero-btn" href="index.html#planner">Back to planner</a></div><img src="${car.img}" alt="${car.make} ${car.model}"></section><section class="road-track">${steps.map((s,i)=>`<article class="road-step" style="--step:${i}"><div class="road-pin">${i+1}</div><div class="road-card"><span>Step ${i+1}</span><h2>${s[0]}</h2><p>${s[1]}</p></div></article>`).join("")}</section><section class="road-warning">Always verify exact fitment and installation requirements.</section>`;
   app.querySelectorAll("img").forEach(fallback);
 }
 
