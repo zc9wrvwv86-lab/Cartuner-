@@ -1,7 +1,7 @@
 const cars = [
   { make: "BMW", model: "M340i", engine: "B58", hp: 382, img: "https://commons.wikimedia.org/wiki/Special:FilePath/2020_BMW_M340i_xDrive_in_Black_Sapphire_Metallic,_rear_left.jpg" },
   { make: "Toyota", model: "GR Supra", engine: "B58", hp: 382, img: "https://commons.wikimedia.org/wiki/Special:FilePath/2020_Toyota_GR_Supra_(United_States).png" },
-  { make: "Volkswagen", model: "Golf GTI", engine: "EA888", hp: 241, img: "https://images.unsplash.com/photo-1606016159991-dfe4f2746ad5?auto=format&fit=crop&w=1000&q=80" },
+  { make: "Volkswagen", model: "Golf GTI", engine: "EA888", hp: 241, img: "https://upload.wikimedia.org/wikipedia/commons/d/d8/Volkswagen_Golf_VIII_GTI_IMG_3604.jpg" },
   { make: "Audi", model: "RS3", engine: "EA855", hp: 401, img: "https://images.unsplash.com/photo-1606152421802-db97b9c7a11b?auto=format&fit=crop&w=1000&q=80" },
   { make: "Nissan", model: "GT-R", engine: "VR38DETT", hp: 565, img: "https://commons.wikimedia.org/wiki/Special:FilePath/2018_Nissan_GT-R_Premium_in_Super_Silver,_Front_Right,_10-11-2022.jpg" },
   { make: "Honda", model: "Civic Type R", engine: "K20C1", hp: 306, img: "https://commons.wikimedia.org/wiki/Special:FilePath/2018_Honda_Civic_GT_Type_R_VTEC_2.0_Front.jpg" },
