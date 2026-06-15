@@ -1,1 +1,0 @@
-Planned update: add a garage section with car cards, part cards, and safer visual previews.
