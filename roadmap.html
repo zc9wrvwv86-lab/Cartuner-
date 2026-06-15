@@ -4,17 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CarTuner Roadmap</title>
-  <link rel="stylesheet" href="roadmap.css?v=5" />
+  <link rel="stylesheet" href="roadmap.css?v=10" />
 </head>
 <body>
-  <main class="roadmap-page">
-    <nav class="nav">
+  <main class="dashboard">
+    <header class="topbar">
       <a class="logo" href="index.html">Car<span>Tuner</span></a>
-      <a href="index.html#planner">Back to planner</a>
-    </nav>
-    <section id="roadmapApp" class="roadmap-shell"></section>
+      <nav>
+        <a href="index.html#planner">Planner</a>
+        <a href="#">Upgrades</a>
+        <a class="active" href="roadmap.html">Roadmaps</a>
+        <a href="#">Dyno</a>
+        <a href="#">Garage</a>
+        <a href="#">Community</a>
+      </nav>
+      <a class="garage-btn" href="#">My Garage</a>
+    </header>
+
+    <aside id="carPanel" class="car-panel"></aside>
+    <section id="roadmapApp" class="dashboard-main"></section>
   </main>
-  <script src="roadmap.js?v=4"></script>
-  <script src="roadmap-drive.js?v=4"></script>
+  <script src="roadmap.js?v=10"></script>
 </body>
 </html>
