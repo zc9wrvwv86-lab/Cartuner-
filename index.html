@@ -3,121 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CarTuner AI Mod Planner</title>
-  <link rel="stylesheet" href="styles.css?v=9" />
+  <title>CarTuner</title>
+  <link rel="stylesheet" href="styles.css?v=11" />
 </head>
 <body>
   <main class="app">
     <nav class="nav">
       <div class="logo">Car<span>Tuner</span></div>
-      <a href="#planner">Build Plan</a>
+      <a href="#planner">Planner</a>
+      <a href="roadmap.html">Roadmap</a>
     </nav>
 
     <section class="hero">
       <div class="hero-text">
-        <p class="badge">AI-style tuning planner</p>
-        <h1>Turn your horsepower goal into a real build list.</h1>
-        <p>
-          Select your car, engine, current power and target power. CarTuner creates a staged mod path with parts, budget range, reliability notes and build difficulty.
-        </p>
+        <p class="badge">Car build planner</p>
+        <h1>Plan your build step by step.</h1>
+        <p>Select a car, engine, base horsepower and target horsepower. Then open the visual roadmap page.</p>
         <a class="hero-btn" href="#planner">Start planning</a>
       </div>
-
       <div class="hero-visual">
-        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80" alt="Performance car" />
-        <div class="floating-card">
-          <strong>Stage 2+</strong>
-          <span>Cooling · Fueling · ECU · Drivetrain</span>
-        </div>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/2019_Ford_Mustang_GT_5.0_facelift.jpg" alt="Car" />
+        <div class="floating-card"><strong>Roadmap</strong><span>Inspect · Setup · Cooling · Grip · Validate</span></div>
       </div>
     </section>
 
     <section class="stats">
-      <div><strong>20+</strong><span>engine presets</span></div>
-      <div><strong>4</strong><span>build levels</span></div>
-      <div><strong>100%</strong><span>static GitHub Pages ready</span></div>
+      <div><strong>Cars</strong><span>model presets</span></div>
+      <div><strong>Engines</strong><span>base horsepower</span></div>
+      <div><strong>Roadmap</strong><span>visual steps</span></div>
     </section>
 
     <section id="planner" class="grid">
       <form id="tuneForm" class="card form-card">
         <h2>Your car</h2>
-
-      <label>Make
-  <div class="autocomplete">
-    <input id="make" placeholder="BMW, Audi, VW, Toyota..." required />
-    <div id="makeDropdown" class="dropdown"></div>
-  </div>
-</label>
-
-<label>Model
-  <div class="autocomplete">
-    <input id="model" placeholder="335i, Golf GTI, Supra..." required />
-    <div id="modelDropdown" class="dropdown"></div>
-  </div>
-</label>
-
-<label>Engine
-  <div class="autocomplete">
-    <input id="engine" placeholder="N54, B58, EA888, 2JZ..." required />
-    <div id="engineDropdown" class="dropdown"></div>
-  </div>
-</label>
-
+        <label>Make<div class="autocomplete"><input id="make" placeholder="BMW, Audi, VW, Toyota..." required /><div id="makeDropdown" class="dropdown"></div></div></label>
+        <label>Model<div class="autocomplete"><input id="model" placeholder="M340i, Golf GTI, Supra..." required /><div id="modelDropdown" class="dropdown"></div></div></label>
+        <label>Engine<div class="autocomplete"><input id="engine" placeholder="B58, EA888, K20C1..." required /><div id="engineDropdown" class="dropdown"></div></div></label>
         <div class="row">
-          <label>Current HP
-            <input id="currentHp" type="number" value="250" min="50" required />
-          </label>
-
-          <label>Target HP
-            <input id="targetHp" type="number" value="350" min="60" required />
-          </label>
+          <label>Base HP<input id="currentHp" type="number" value="250" min="50" required /></label>
+          <label>Target HP<input id="targetHp" type="number" value="350" min="60" required /></label>
         </div>
-
-        <label>Use case
-          <select id="usage">
-            <option value="daily">Daily driver</option>
-            <option value="weekend">Weekend car</option>
-            <option value="track">Closed-course track</option>
-            <option value="show">Show build</option>
-          </select>
-        </label>
-
-        <label>Fuel
-          <select id="fuel">
-            <option value="pump">Pump fuel</option>
-            <option value="premium">Premium fuel</option>
-            <option value="ethanol">Ethanol blend</option>
-            <option value="race">Race fuel / off-road</option>
-          </select>
-        </label>
-
-        <button type="submit">Generate tuning plan</button>
+        <label>Use case<select id="usage"><option value="daily">Daily</option><option value="weekend">Weekend</option><option value="track">Track</option><option value="show">Show</option></select></label>
+        <label>Fuel<select id="fuel"><option value="pump">Pump</option><option value="premium">Premium</option><option value="ethanol">Ethanol blend</option></select></label>
+        <button type="submit">Generate plan</button>
       </form>
-
-      <section id="results" class="card results">
-        <h2>Your plan appears here</h2>
-        <p>
-          Choose a preset below or enter your own build. Bigger power goals need cooling, fueling, tires, brakes, drivetrain support and professional ECU calibration.
-        </p>
-      </section>
+      <section id="results" class="card results"><h2>Your plan appears here</h2><p>Choose a preset or enter your own car.</p><p><a class="hero-btn" href="roadmap.html">Open roadmap page</a></p></section>
     </section>
 
-    <section class="card">
-      <h2>Popular car presets</h2>
-      <div id="presets" class="presets"></div>
-    </section><div id="modModal" class="modal">
-  <div class="modal-box">
-    <button id="closeModal" class="modal-close" type="button">×</button>
-    <img id="modalImage" src="" alt="Modification preview" />
-    <h2 id="modalTitle"></h2>
-    <p id="modalText"></p>
-    <div class="modal-note">
-      Always check compatibility, legality, emissions rules and professional installation requirements before buying parts.
-    </div>
-  </div>
-</div>
-  </main>
+    <section class="card"><h2>Popular car presets</h2><div id="presets" class="presets"></div></section>
 
- <script src="script.js?v=9"></script>
+    <div id="modModal" class="modal"><div class="modal-box"><button id="closeModal" class="modal-close" type="button">×</button><img id="modalImage" src="" alt="Preview" /><h2 id="modalTitle"></h2><p id="modalText"></p><div class="modal-note">Check fitment and local rules before buying parts.</div></div></div>
+  </main>
+  <script src="script.js?v=11"></script>
 </body>
 </html>
