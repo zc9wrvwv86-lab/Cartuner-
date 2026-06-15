@@ -1,17 +1,17 @@
 function enableRoadDrive(){
   const track=document.querySelector('.road-track');
   const steps=[...document.querySelectorAll('.road-step')];
-  if(!track||!steps.length)return;
   const style=document.createElement('style');
-  style.textContent='.road-track{position:relative}.road-car{position:absolute;left:18px;top:24px;z-index:5;width:54px;height:54px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(135deg,#ec4899,#fb923c);color:#111827;font-weight:950;box-shadow:0 12px 30px rgba(236,72,153,.45);transition:transform .7s cubic-bezier(.2,.8,.2,1)}.road-step{border:0;text-align:left;color:inherit;cursor:pointer;background:transparent;width:100%}.road-step.active .road-card{border-color:rgba(236,72,153,.9);transform:translateX(12px) scale(1.02)}.road-card{transition:transform .22s ease,border-color .22s ease}.road-step:nth-of-type(4) .road-card:after{content:"Exhaust detail";display:inline-block;margin-top:10px;padding:7px 11px;border-radius:999px;background:#07111f;color:#fff;font-size:12px;animation:smokeMove 1.6s ease-in-out infinite}@keyframes smokeMove{50%{transform:translateX(8px);opacity:.75}}';
+  style.textContent='body{background:#050613}.roadmap-shell{display:grid;grid-template-columns:320px 1fr;gap:28px}.build-card{padding:24px;border-radius:24px;background:rgba(5,6,19,.82);border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 90px rgba(0,0,0,.42)}.build-card img{width:100%;height:160px;object-fit:cover;border-radius:20px}.brand-row{display:flex;gap:14px;align-items:center;margin:20px 0}.brand-mark{width:46px;height:46px;display:grid;place-items:center;border-radius:50%;border:2px solid #fff}.road-stage{position:relative;min-height:760px;border-radius:28px;padding:28px;background:rgba(3,7,18,.72);border:1px solid rgba(255,255,255,.1);overflow:hidden}.road-title h2{font-size:42px;margin:0}.road-title h2:before{content:"///";color:#ec4899;margin-right:14px}.progress-card{position:absolute;right:28px;top:28px;width:280px;padding:18px;border-radius:18px;background:rgba(5,6,19,.82);border:1px solid rgba(255,255,255,.12)}.progress-line{height:8px;background:rgba(255,255,255,.1);border-radius:999px;overflow:hidden}.progress-line i{display:block;height:100%;background:#ec4899}.road-track{position:absolute;left:28px;right:28px;top:220px;bottom:180px}.road-car{position:absolute;left:18px;top:24px;z-index:5;width:54px;height:54px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(135deg,#ec4899,#fb923c);color:#111827;font-weight:950;transition:transform .7s cubic-bezier(.2,.8,.2,1)}';
   document.head.appendChild(style);
+  if(!track||!steps.length)return;
   const marker=document.createElement('div');
-  const title=document.querySelector('.road-hero h1')?.textContent||'Car';
+  const title=document.querySelector('.build-card h1')?.textContent||'Car';
   marker.className='road-car';
   marker.textContent=title.includes('Golf')?'GTI':title.trim().slice(0,3).toUpperCase();
   track.prepend(marker);
   function move(i){steps.forEach(s=>s.classList.remove('active'));steps[i].classList.add('active');marker.style.transform=`translateY(${steps[i].offsetTop-8}px)`}
-  steps.forEach((step,i)=>{step.setAttribute('role','button');step.tabIndex=0;step.addEventListener('click',()=>move(i));step.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();move(i)}})});
+  steps.forEach((step,i)=>step.addEventListener('click',()=>move(i)));
   setTimeout(()=>move(0),80);
 }
 window.addEventListener('load',enableRoadDrive);
