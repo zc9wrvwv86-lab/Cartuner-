@@ -3,7 +3,7 @@ const fallback="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?aut
 const cars=[
  {brand:"BMW",model:"M340i",engine:"B58",hp:382,target:500,type:"ice",image:img("2020_BMW_M340i_xDrive_in_Black_Sapphire_Metallic,_rear_left.jpg")},
  {brand:"Toyota",model:"GR Supra",engine:"B58",hp:382,target:550,type:"ice",image:img("2020_Toyota_GR_Supra_(United_States).png")},
- {brand:"Volkswagen",model:"Golf GTI",engine:"EA888",hp:241,target:350,type:"ice",image:"https://images.unsplash.com/photo-1606016159991-dfe4f2746ad5?auto=format&fit=crop&w=900&q=80"},
+ {brand:"Volkswagen",model:"Golf GTI",engine:"EA888",hp:241,target:350,type:"ice",image:img("VW_Golf_VI_GTI_front_20100711.jpg")},
  {brand:"Audi",model:"RS3",engine:"EA855",hp:401,target:560,type:"ice",image:"https://images.unsplash.com/photo-1606152421802-db97b9c7a11b?auto=format&fit=crop&w=900&q=80"},
  {brand:"Nissan",model:"GT-R",engine:"VR38DETT",hp:565,target:800,type:"ice",image:img("2018_Nissan_GT-R_Premium_in_Super_Silver,_Front_Right,_10-11-2022.jpg")},
  {brand:"Honda",model:"Civic Type R",engine:"K20C1",hp:306,target:420,type:"ice",image:img("2018_Honda_Civic_GT_Type_R_VTEC_2.0_Front.jpg")},
