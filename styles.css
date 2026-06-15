@@ -26,7 +26,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
   margin-bottom: 26px;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -39,7 +41,8 @@ body {
 }
 
 .nav a,
-.hero-btn {
+.hero-btn,
+.ghost-btn {
   color: #fff;
   text-decoration: none;
   background: rgba(255,255,255,.08);
@@ -80,6 +83,10 @@ h2 {
   margin: 0 0 18px;
 }
 
+h3 {
+  margin: 18px 0 10px;
+}
+
 p {
   color: #b6c3d8;
   line-height: 1.65;
@@ -96,6 +103,11 @@ p {
   background: #22c55e;
   color: #04130a;
   font-weight: 900;
+}
+
+.ghost-btn {
+  display: inline-block;
+  margin-top: 18px;
 }
 
 .hero-visual {
@@ -165,10 +177,13 @@ p {
   grid-template-columns: 390px 1fr;
   gap: 24px;
   margin-bottom: 24px;
+  position: relative;
+  z-index: 10;
 }
 
 .card {
   padding: 26px;
+  margin-bottom: 24px;
 }
 
 label {
@@ -177,6 +192,8 @@ label {
   margin-bottom: 16px;
   color: #e5edff;
   font-weight: 800;
+  position: relative;
+  z-index: 1;
 }
 
 input,
@@ -204,6 +221,7 @@ button {
   border: none;
   cursor: pointer;
   font-weight: 950;
+  transition: transform .2s ease, border-color .2s ease, background .2s ease;
 }
 
 button:hover {
@@ -214,6 +232,15 @@ button:hover {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
+}
+
+.result-hero img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.14);
+  margin-bottom: 20px;
 }
 
 .result-header {
@@ -252,6 +279,7 @@ button:hover {
   border-radius: 18px;
   background: rgba(2,6,23,.72);
   border: 1px solid rgba(148,163,184,.18);
+  text-align: left;
 }
 
 .part strong {
@@ -291,7 +319,7 @@ button:hover {
 
 .preset {
   text-align: left;
-  min-height: 140px;
+  min-height: 150px;
   border: 1px solid rgba(148,163,184,.18);
   background:
     linear-gradient(to top, rgba(2,6,23,.95), rgba(2,6,23,.35)),
@@ -321,158 +349,6 @@ button:hover {
   color: #dbeafe;
 }
 
-@media (max-width: 900px) {
-  .app {
-    padding: 14px;
-  }
-
-  .hero,
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero {
-    padding: 26px;
-  }
-
-  .hero-visual img {
-    height: 280px;
-  }
-
-  .stats,
-  .meta {
-    grid-template-columns: 1fr;
-  }
-}
-.autocomplete {
-  position: relative;
-}
-
-.dropdown {
-  display: none;
-  position: absolute;
-  z-index: 50;
-  top: calc(100% + 8px);
-  left: 0;
-  right: 0;
-  max-height: 220px;
-  overflow-y: auto;
-  background: #020617;
-  border: 1px solid rgba(148,163,184,.35);
-  border-radius: 16px;
-  box-shadow: 0 20px 50px rgba(0,0,0,.45);
-}
-
-.dropdown.show {
-  display: block;
-}
-
-.dropdown button {
-  display: block;
-  width: 100%;
-  text-align: left;
-  padding: 13px 15px;
-  border-radius: 0;
-  background: transparent;
-  color: white;
-  border: none;
-}
-
-.dropdown button:hover {
-  background: rgba(34,197,94,.18);
-  transform: none;
-}
-.dropdown {
-  display: none !important;
-}
-
-.dropdown.show {
-  display: block !important;
-}
-
-.dropdown-item {
-  padding: 14px 16px;
-  color: white;
-  background: #020617;
-  border-bottom: 1px solid rgba(255,255,255,.08);
-  cursor: pointer;
-}
-
-.dropdown-item:hover {
-  background: rgba(34,197,94,.2);
-}
-.autocomplete {
-  position: relative;
-  z-index: 1000;
-}
-
-.dropdown {
-  display: none !important;
-  position: absolute !important;
-  z-index: 99999 !important;
-  top: calc(100% + 8px) !important;
-  left: 0 !important;
-  right: 0 !important;
-  max-height: 240px !important;
-  overflow-y: auto !important;
-  background: #020617 !important;
-  border: 1px solid rgba(148, 163, 184, 0.45) !important;
-  border-radius: 16px !important;
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.65) !important;
-}
-
-.dropdown.show {
-  display: block !important;
-}
-
-.dropdown-item {
-  display: block !important;
-  width: 100% !important;
-  padding: 14px 16px !important;
-  color: #ffffff !important;
-  background: #020617 !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-  cursor: pointer !important;
-  font-weight: 800 !important;
-}
-
-.dropdown-item:hover {
-  background: rgba(34, 197, 94, 0.22) !important;
-}
-.grid,
-.card,
-.form-card,
-form,
-label,
-.autocomplete {
-  overflow: visible !important;
-}
-
-.grid {
-  position: relative;
-  z-index: 10;
-}
-
-.form-card {
-  position: relative;
-  z-index: 9999 !important;
-  isolation: isolate;
-}
-
-.results {
-  position: relative;
-  z-index: 1 !important;
-}
-
-label {
-  position: relative;
-  z-index: 1;
-}
-
-label:focus-within {
-  z-index: 999999 !important;
-}
-
 .autocomplete {
   position: relative;
   z-index: 999999 !important;
@@ -487,11 +363,8 @@ label:focus-within {
   right: 0 !important;
   max-height: 260px !important;
   overflow-y: auto !important;
-
   background: #020617 !important;
   opacity: 1 !important;
-  backdrop-filter: none !important;
-
   border: 2px solid rgba(34, 197, 94, 0.8) !important;
   border-radius: 16px !important;
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.95) !important;
@@ -505,11 +378,9 @@ label:focus-within {
   display: block !important;
   width: 100% !important;
   padding: 15px 16px !important;
-
   color: #ffffff !important;
   background: #020617 !important;
   opacity: 1 !important;
-
   border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
   cursor: pointer !important;
   font-weight: 900 !important;
@@ -518,6 +389,249 @@ label:focus-within {
 .dropdown-item:hover {
   background: #064e3b !important;
 }
+
+.grid,
+.card,
+.form-card,
+form,
+label,
+.autocomplete {
+  overflow: visible !important;
+}
+
+.form-card {
+  position: relative;
+  z-index: 9999 !important;
+  isolation: isolate;
+}
+
+.results {
+  position: relative;
+  z-index: 1 !important;
+}
+
+label:focus-within {
+  z-index: 999999 !important;
+}
+
+.section-card {
+  position: relative;
+  overflow: hidden !important;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.section-heading p {
+  max-width: 480px;
+  margin-top: 0;
+}
+
+.garage-tabs {
+  display: inline-flex;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 999px;
+  background: rgba(2,6,23,.72);
+  border: 1px solid rgba(148,163,184,.18);
+  margin-bottom: 22px;
+}
+
+.garage-tab {
+  width: auto;
+  min-width: 120px;
+  border-radius: 999px;
+  background: transparent;
+  color: #dbeafe;
+}
+
+.garage-tab.active {
+  background: #22c55e;
+  color: #04130a;
+}
+
+.garage-panel {
+  display: none;
+}
+
+.garage-panel.active {
+  display: block;
+}
+
+.garage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.garage-car {
+  display: grid;
+  grid-template-rows: 190px 1fr;
+  overflow: hidden;
+  border-radius: 24px;
+  background: rgba(2,6,23,.72);
+  border: 1px solid rgba(148,163,184,.18);
+}
+
+.garage-car img,
+.part-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.garage-car div {
+  padding: 18px;
+}
+
+.garage-car span,
+.part-tile span,
+.active-exhaust span,
+.exhaust-choice span {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.garage-car h3 {
+  margin: 6px 0;
+}
+
+.garage-car button {
+  margin-top: 12px;
+}
+
+.parts-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.part-tile {
+  display: grid;
+  grid-template-rows: 150px auto auto;
+  gap: 10px;
+  text-align: left;
+  padding: 0 0 16px;
+  overflow: hidden;
+  border-radius: 22px;
+  background: rgba(2,6,23,.72);
+  border: 1px solid rgba(148,163,184,.18);
+  color: white;
+}
+
+.part-tile strong,
+.part-tile span {
+  padding: 0 16px;
+}
+
+.exhaust-demo {
+  background:
+    linear-gradient(135deg, rgba(15,23,42,.88), rgba(2,6,23,.82)),
+    radial-gradient(circle at 80% 20%, rgba(34,197,94,.18), transparent 32%);
+}
+
+.install-preview {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 22px;
+  align-items: stretch;
+  min-height: 330px;
+  margin-bottom: 18px;
+}
+
+.preview-car {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: #020617;
+}
+
+.preview-car img {
+  width: 100%;
+  height: 100%;
+  min-height: 330px;
+  object-fit: cover;
+  filter: saturate(1.08) contrast(1.06);
+}
+
+.preview-glow {
+  position: absolute;
+  inset: auto 8% 8% auto;
+  width: 180px;
+  height: 70px;
+  border-radius: 999px;
+  background: rgba(34,197,94,.2);
+  filter: blur(22px);
+}
+
+.active-exhaust {
+  display: grid;
+  grid-template-rows: 170px auto;
+  overflow: hidden;
+  border-radius: 26px;
+  border: 1px solid rgba(34,197,94,.42);
+  background: rgba(2,6,23,.88);
+  box-shadow: 0 24px 70px rgba(0,0,0,.42);
+}
+
+.active-exhaust img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+
+.active-exhaust div {
+  padding: 18px;
+}
+
+.active-exhaust h3 {
+  margin: 6px 0;
+}
+
+.slide-in {
+  animation: slideIntoCar .42s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes slideIntoCar {
+  from {
+    opacity: 0;
+    transform: translateX(80px) scale(.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.exhaust-slider {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.exhaust-choice {
+  text-align: left;
+  background: rgba(2,6,23,.72);
+  border: 1px solid rgba(148,163,184,.18);
+  color: white;
+}
+
+.exhaust-choice.active {
+  border: 1px solid rgba(34,197,94,.95);
+  box-shadow: 0 0 0 4px rgba(34,197,94,.12);
+}
+
+.exhaust-choice strong,
+.exhaust-choice span {
+  display: block;
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -574,4 +688,47 @@ label:focus-within {
   background: rgba(245, 158, 11, 0.12);
   border: 1px solid rgba(245, 158, 11, 0.35);
   color: #fcd34d;
+}
+
+@media (max-width: 900px) {
+  .app {
+    padding: 14px;
+  }
+
+  .hero,
+  .grid,
+  .install-preview {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 26px;
+  }
+
+  .hero-visual img,
+  .preview-car img {
+    height: 280px;
+    min-height: 280px;
+  }
+
+  .stats,
+  .meta,
+  .exhaust-slider {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading {
+    display: block;
+  }
+
+  .garage-tabs {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .garage-tab {
+    width: 100%;
+    min-width: 0;
+  }
 }
