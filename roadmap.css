@@ -2,5 +2,5 @@
 @import url('roadmap-stages.css?v=1');
 @import url('roadmap-panels.css?v=1');
 @import url('roadmap-bg.css?v=1');
-@import url('roadmap-cockpit.css?v=1');
+@import url('roadmap-cockpit.css?v=2');
 body{margin:0;background:#050613;color:#fff;font-family:Inter,Arial,sans-serif;overflow-x:hidden}body:before{content:"";position:fixed;inset:0;z-index:-2;background:#050613}.roadmap-page{max-width:1680px;margin:auto;padding:0 28px 24px}.roadmap-page>.nav{height:76px;margin:0 -28px 22px;padding:0 32px;background:rgba(0,0,0,.76);border-bottom:1px solid rgba(255,255,255,.08);border-radius:0}.road-card{background:rgba(5,6,19,.78);border:1px solid rgba(255,255,255,.13);border-radius:18px;padding:15px}.road-pin{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:15px;background:linear-gradient(135deg,#ec4899,#fb923c);font-weight:950}.progress-line i{display:block;height:100%;background:#ec4899}.road-title h2:before{content:'///';color:#ec4899;margin-right:14px}
