@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CarTuner</title>
   <link rel="stylesheet" href="styles.css?v=11" />
+  <link rel="stylesheet" href="fixes.css?v=1" />
 </head>
 <body>
   <main class="app">
@@ -17,43 +18,43 @@
     <section class="hero">
       <div class="hero-text">
         <p class="badge">Car build planner</p>
-        <h1>Plan your build step by step.</h1>
-        <p>Select a car, engine, base horsepower and target horsepower. Then open the visual roadmap page.</p>
+        <h1>Plan your build on a visual roadmap.</h1>
+        <p>Select a brand, model, engine and target horsepower. Your base horsepower loads automatically when the combo is known.</p>
         <a class="hero-btn" href="#planner">Start planning</a>
       </div>
       <div class="hero-visual">
-        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/2019_Ford_Mustang_GT_5.0_facelift.jpg" alt="Car" />
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80" alt="Car" />
         <div class="floating-card"><strong>Roadmap</strong><span>Inspect · Setup · Cooling · Grip · Validate</span></div>
       </div>
     </section>
 
     <section class="stats">
-      <div><strong>Cars</strong><span>model presets</span></div>
-      <div><strong>Engines</strong><span>base horsepower</span></div>
-      <div><strong>Roadmap</strong><span>visual steps</span></div>
+      <div><strong>Brand</strong><span>filtered models</span></div>
+      <div><strong>Engine</strong><span>filtered by model</span></div>
+      <div><strong>Roadmap</strong><span>separate visual page</span></div>
     </section>
 
-    <section id="planner" class="grid">
+    <section id="planner" class="grid planner-only">
       <form id="tuneForm" class="card form-card">
         <h2>Your car</h2>
-        <label>Make<div class="autocomplete"><input id="make" placeholder="BMW, Audi, VW, Toyota..." required /><div id="makeDropdown" class="dropdown"></div></div></label>
-        <label>Model<div class="autocomplete"><input id="model" placeholder="M340i, Golf GTI, Supra..." required /><div id="modelDropdown" class="dropdown"></div></div></label>
-        <label>Engine<div class="autocomplete"><input id="engine" placeholder="B58, EA888, K20C1..." required /><div id="engineDropdown" class="dropdown"></div></div></label>
+        <label>Brand<div class="autocomplete"><input id="make" placeholder="BMW, Audi, Volkswagen..." required /><div id="makeDropdown" class="dropdown"></div></div></label>
+        <label>Model<div class="autocomplete"><input id="model" placeholder="M340i, Golf GTI, RS3..." required /><div id="modelDropdown" class="dropdown"></div></div></label>
+        <label>Engine<div class="autocomplete"><input id="engine" placeholder="B58, EA888, EA855..." required /><div id="engineDropdown" class="dropdown"></div></div></label>
         <div class="row">
           <label>Base HP<input id="currentHp" type="number" value="250" min="50" required /></label>
           <label>Target HP<input id="targetHp" type="number" value="350" min="60" required /></label>
         </div>
         <label>Use case<select id="usage"><option value="daily">Daily</option><option value="weekend">Weekend</option><option value="track">Track</option><option value="show">Show</option></select></label>
         <label>Fuel<select id="fuel"><option value="pump">Pump</option><option value="premium">Premium</option><option value="ethanol">Ethanol blend</option></select></label>
-        <button type="submit">Generate plan</button>
+        <button type="submit">Open visual roadmap</button>
       </form>
-      <section id="results" class="card results"><h2>Your plan appears here</h2><p>Choose a preset or enter your own car.</p><p><a class="hero-btn" href="roadmap.html">Open roadmap page</a></p></section>
+      <section id="results" class="card results" hidden></section>
     </section>
 
     <section class="card"><h2>Popular car presets</h2><div id="presets" class="presets"></div></section>
 
     <div id="modModal" class="modal"><div class="modal-box"><button id="closeModal" class="modal-close" type="button">×</button><img id="modalImage" src="" alt="Preview" /><h2 id="modalTitle"></h2><p id="modalText"></p><div class="modal-note">Check fitment and local rules before buying parts.</div></div></div>
   </main>
-  <script src="script.js?v=11"></script>
+  <script src="script.js?v=12"></script>
 </body>
 </html>
