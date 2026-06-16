@@ -1,34 +1,117 @@
-const cars=[
- {make:"BMW",model:"M340i",engine:"B58",hp:382,target:500,img:"https://commons.wikimedia.org/wiki/Special:FilePath/2020_BMW_M340i_xDrive_in_Black_Sapphire_Metallic,_rear_left.jpg"},
- {make:"Toyota",model:"GR Supra",engine:"B58",hp:382,target:550,img:"https://commons.wikimedia.org/wiki/Special:FilePath/2020_Toyota_GR_Supra_(United_States).png"},
- {make:"Volkswagen",model:"Golf GTI",engine:"EA888 Gen 3 2.0T",hp:241,target:350,img:"https://upload.wikimedia.org/wikipedia/commons/d/d8/Volkswagen_Golf_VIII_GTI_IMG_3604.jpg"},
- {make:"Audi",model:"RS3",engine:"EA855",hp:401,target:560,img:"https://images.unsplash.com/photo-1606152421802-db97b9c7a11b?auto=format&fit=crop&w=1000&q=80"},
- {make:"Nissan",model:"GT-R",engine:"VR38DETT",hp:565,target:800,img:"https://commons.wikimedia.org/wiki/Special:FilePath/2018_Nissan_GT-R_Premium_in_Super_Silver,_Front_Right,_10-11-2022.jpg"},
- {make:"Honda",model:"Civic Type R",engine:"K20C1",hp:306,target:420,img:"https://commons.wikimedia.org/wiki/Special:FilePath/2018_Honda_Civic_GT_Type_R_VTEC_2.0_Front.jpg"},
- {make:"Ford",model:"Mustang GT",engine:"Coyote 5.0",hp:460,target:700,img:"https://commons.wikimedia.org/wiki/Special:FilePath/2019_Ford_Mustang_GT_5.0_facelift.jpg"},
- {make:"Tesla",model:"Model 3 Performance",engine:"Dual Motor EV",hp:450,target:450,img:"https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1000&q=80",ev:true}
+const fallbackCar={
+  make:"Volkswagen",
+  model:"Golf GTI",
+  engine:"EA888 Gen 3 2.0T",
+  hp:241,
+  target:350,
+  torque:"273 LB-FT",
+  image:"https://upload.wikimedia.org/wikipedia/commons/d/d8/Volkswagen_Golf_VIII_GTI_IMG_3604.jpg"
+};
+
+const stages=[
+  {title:"Inspection",text:"Service, scan, logs",state:"In Progress",days:"1-2 Days",checks:["OBD Scan","Fluid Check","Leak Inspection","Performance Log"]},
+  {title:"Base Setup",text:"ECU baseline + calibration",state:"Queued",days:"2-3 Days",checks:["Baseline Log","Spark Plugs","Fuel Quality","Safe Map"]},
+  {title:"Cooling",text:"Control heat before adding power",state:"Queued",days:"1-2 Days",checks:["IAT Review","Intercooler","Coolant Check","Heat Soak Test"]},
+  {title:"Airflow",text:"Intake and exhaust flow",state:"Queued",days:"2-4 Days",checks:["Intake Path","Downpipe Plan","Fitment","Sound Check"]},
+  {title:"Grip & Brakes",text:"Tires, pads, fluid",state:"Queued",days:"2-3 Days",checks:["Tires","Pads","Brake Fluid","Alignment"]},
+  {title:"Final Validation",text:"Test, inspect, refine",state:"Queued",days:"1-2 Days",checks:["Dyno Pull","Road Log","Leak Check","Final Review"]}
 ];
-const iceStages=[
- {id:1,title:"Inspection",text:"Service, scan, logs",checks:["OBD Scan","Fluid Check","Leak Inspection","Performance Log"]},
- {id:2,title:"Base Setup",text:"ECU baseline + calibration",checks:["Baseline Log","Spark Plugs","Fuel Quality","Safe Map"]},
- {id:3,title:"Cooling",text:"Intercooler and temps",checks:["IAT Review","Intercooler","Coolant Check","Heat Soak Test"]},
- {id:4,title:"Airflow",text:"Intake + exhaust",checks:["Intake Path","Exhaust Detail","Fitment","Sound Check"]},
- {id:5,title:"Grip & Brakes",text:"Tires, pads, fluid",checks:["Tires","Pads","Brake Fluid","Alignment"]},
- {id:6,title:"Final Validation",text:"Test, inspect, refine",checks:["Dyno Pull","Road Log","Leak Check","Final Review"]}
-];
-const evStages=[
- {id:1,title:"Inspection",text:"Tires, brakes, suspension",checks:["Tire Check","Brake Check","Alignment","Temp Review"]},
- {id:2,title:"Grip",text:"Tires and alignment",checks:["Tires","Alignment","Wheel Weight","Pressure"]},
- {id:3,title:"Brakes",text:"Pads, fluid, rotors",checks:["Pads","Rotors","Fluid","Cooling"]},
- {id:4,title:"Thermal",text:"Battery and drive temps",checks:["Battery Temps","Drive Unit","Cooling","Logs"]},
- {id:5,title:"Validation",text:"Repeatable performance",checks:["Repeat Runs","Temps","Inspection","Review"]}
-];
-const routePositions=[{left:"30%",top:"72%"},{left:"24%",top:"70%"},{left:"44%",top:"70%"},{left:"59%",top:"69%"},{left:"74%",top:"68%"},{left:"88%",top:"67%"}];
-function norm(value){return String(value||"").toLowerCase().replace(/[^a-z0-9]/g,"")}
-function getParams(){return new URLSearchParams(location.search)}
-function getCar(){const p=getParams();return cars.find(c=>norm(c.make)===norm(p.get("make"))&&norm(c.model)===norm(p.get("model")))||cars.find(c=>norm(c.engine)===norm(p.get("engine")))||cars[0]}
-function fallbackImage(img){img.onerror=()=>{img.src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1000&q=80"}}
-function setDetail(stage,car,target,index,total){const progress=Math.round(((index+1)/total)*100);document.getElementById("detailPanel").innerHTML=`<div><strong>${String(stage.id).padStart(2,"0")} ${stage.title}</strong><p>${stage.text}</p></div><div class="checks">${stage.checks.map(item=>`<span>${item}</span>`).join("")}</div><button type="button">View Details →</button>`;document.getElementById("progressBox").innerHTML=`<span>OVERALL PROGRESS</span><strong>${progress}%</strong><div class="progress-line"><i style="width:${progress}%"></i></div><p>${index+1} of ${total} stages completed</p>`}
-function moveRouteCar(index){const marker=document.getElementById("carMarker"),pos=routePositions[index]||routePositions[0];if(!marker)return;marker.classList.remove("driving");void marker.offsetWidth;marker.classList.add("driving");marker.style.left=pos.left;marker.style.top=pos.top}
-function render(){const car=getCar(),p=getParams(),target=Number(p.get("targetHp"))||car.target||car.hp+100,stages=car.ev?evStages:iceStages;document.getElementById("carPanel").innerHTML=`<a href="index.html#planner">← Back to Build</a><div class="brand-row"><span class="brand-mark">${car.make.slice(0,2).toUpperCase()}</span><div><small>${car.make}</small><h1>${car.model}</h1></div></div><img src="${car.img}" alt="${car.make} ${car.model}"><p class="engine-pill">${car.engine}</p><div class="power-row"><div><small>BASE</small><strong>${car.hp} HP</strong></div><span>→</span><div><small>TARGET</small><strong>${target} HP</strong></div></div><button class="summary-btn" type="button">View Build Summary →</button>`;document.getElementById("roadmapApp").innerHTML=`<div class="dashboard-bg"></div><div class="title-block"><h1>Build Roadmap</h1><p>Follow the path to ${target} HP.<br>${stages.length} stages. One purpose. Peak performance.</p><div class="chips"><span>${stages.length} STAGES</span><span>~8–10 WEEKS</span></div></div><div id="progressBox" class="progress-box"></div><div class="stages"><div class="route-line"></div>${stages.map((stage,index)=>`<article class="stage s${index+1} ${index===0?"active":""}" data-index="${index}"><div class="num">${String(stage.id).padStart(2,"0")}</div><h3>${stage.title}</h3><p>${stage.text}</p></article>`).join("")}<div id="carMarker" class="car-marker"><img src="${car.img}" alt="${car.model} roadmap car"></div></div><div id="detailPanel" class="detail-panel"></div><div class="summary-strip"><span>⚡ Target Power <b>${target} HP</b></span><span>🛡 Reliability First</span><span>🏁 Track Ready</span><span>⏱ ~8–10 Weeks</span></div><div class="cockpit"></div>`;document.querySelectorAll("img").forEach(fallbackImage);function activate(index){document.querySelectorAll(".stage").forEach(stage=>stage.classList.remove("active"));document.querySelector(`.stage[data-index="${index}"]`)?.classList.add("active");moveRouteCar(index);setDetail(stages[index],car,target,index,stages.length)}document.querySelectorAll(".stage").forEach(stage=>stage.addEventListener("click",()=>activate(Number(stage.dataset.index))));activate(0)}
-render();
+
+const colors=["#ff1493","#1788ff","#ad42ff","#ff6d2d","#ff3f73","#d520ff"];
+const params=new URLSearchParams(window.location.search);
+const car={
+  make:params.get("make")||fallbackCar.make,
+  model:params.get("model")||fallbackCar.model,
+  engine:params.get("engine")||fallbackCar.engine,
+  hp:Number(params.get("currentHp"))||fallbackCar.hp,
+  target:Number(params.get("targetHp"))||fallbackCar.target,
+  torque:params.get("torque")||fallbackCar.torque,
+  image:params.get("image")||fallbackCar.image
+};
+
+const carPanel=document.getElementById("carPanel");
+const stageRail=document.getElementById("stageRail");
+const detailPanel=document.getElementById("detailPanel");
+const progressBox=document.getElementById("progressBox");
+const summaryStrip=document.getElementById("summaryStrip");
+const roadmapIntro=document.getElementById("roadmapIntro");
+
+function safeImage(img){img.onerror=()=>{img.src=fallbackCar.image}}
+function progressFor(index){return Math.round(((index+1)/stages.length)*100)}
+function renderCarPanel(){
+  carPanel.innerHTML=`
+    <a href="index.html#planner"><- Back to Build</a>
+    <div class="vehicle-title">
+      <span class="vehicle-logo">${car.make.slice(0,1)}</span>
+      <div><small>${car.make}</small><h2>${car.model}</h2></div>
+    </div>
+    <img src="${car.image}" alt="${car.make} ${car.model}">
+    <p class="engine-pill">${car.engine}</p>
+    <div class="power-grid">
+      <div><small>Base</small><strong>${car.hp} HP</strong><small>${car.torque}</small></div>
+      <span>-></span>
+      <div class="target"><small>Target</small><strong>${car.target} HP</strong><small>380 LB-FT</small></div>
+    </div>
+    <button class="summary-btn" type="button">View Build Summary -></button>
+  `;
+  safeImage(carPanel.querySelector("img"));
+}
+function renderStages(){
+  stageRail.innerHTML=stages.map((stage,index)=>`
+    <button class="stage-card ${index===0?"active":""}" type="button" data-index="${index}" style="color:${colors[index]}">
+      <span class="stage-number">${String(index+1).padStart(2,"0")}</span>
+      <h3>${stage.title}</h3>
+      <p>${stage.text}</p>
+      ${index===0?`<span class="stage-state">${stage.state}</span>`:""}
+      <i class="route-dot"></i>
+    </button>
+  `).join("");
+  stageRail.querySelectorAll(".stage-card").forEach(button=>{
+    button.addEventListener("click",()=>activateStage(Number(button.dataset.index)));
+  });
+}
+function renderProgress(index){
+  const progress=progressFor(index);
+  progressBox.innerHTML=`
+    <header><span>Overall Progress</span><strong>${progress}%</strong></header>
+    <div class="progress-line"><i style="width:${progress}%"></i></div>
+    <p>${index+1} of ${stages.length} stages completed</p>
+  `;
+}
+function renderDetail(index){
+  const stage=stages[index];
+  detailPanel.innerHTML=`
+    <div>
+      <h2><span>${String(index+1).padStart(2,"0")}</span>${stage.title}</h2>
+      <p>${stage.text} to ensure your car is ready.</p>
+    </div>
+    <div class="checks">
+      ${stage.checks.map((check,checkIndex)=>`<span>${check}<br><small>${checkIndex===3&&index===0?"In Progress":"Completed"}</small></span>`).join("")}
+    </div>
+    <div class="detail-time">
+      <small>Est. Time</small>
+      <strong>${stage.days}</strong>
+      <button type="button">View Details -></button>
+    </div>
+  `;
+}
+function renderSummary(){
+  summaryStrip.innerHTML=`
+    <div><small>Target Power</small><strong>${car.target} HP</strong></div>
+    <div><small>Reliability First</small><strong>Proven Parts & Tuned Safety</strong></div>
+    <div><small>Track Ready</small><strong>Performance You Can Feel</strong></div>
+    <div><small>Total Est. Time</small><strong>~8-10 Weeks</strong></div>
+  `;
+}
+function activateStage(index){
+  stageRail.querySelectorAll(".stage-card").forEach(card=>card.classList.remove("active"));
+  stageRail.querySelector(`[data-index="${index}"]`)?.classList.add("active");
+  renderProgress(index);
+  renderDetail(index);
+}
+
+roadmapIntro.innerHTML=`Follow the path to ${car.target} HP.<br>Six stages. One purpose. Peak performance.`;
+renderCarPanel();
+renderStages();
+renderSummary();
+activateStage(0);
