@@ -4,28 +4,52 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CarTuner Roadmap</title>
-  <link rel="stylesheet" href="roadmap.css?v=20" />
-  <link rel="stylesheet" href="roadmap-final.css?v=1" />
-  <link rel="stylesheet" href="roadmap-cockpit-final.css?v=1" />
-  <link rel="stylesheet" href="roadmap-stage-final.css?v=1" />
+  <link rel="stylesheet" href="roadmap.css?v=21" />
 </head>
-<body>
-  <main class="dashboard">
-    <header class="topbar">
-      <a class="logo" href="index.html">Car<span>Tuner</span></a>
-      <nav>
-        <a href="index.html#planner">Planner</a>
-        <a href="#">Upgrades</a>
-        <a class="active" href="roadmap.html">Roadmaps</a>
-        <a href="#">Dyno</a>
-        <a href="#">Garage</a>
-        <a href="#">Community</a>
-      </nav>
-      <a class="garage-btn" href="#">My Garage</a>
-    </header>
-    <aside id="carPanel" class="car-panel"></aside>
-    <section id="roadmapApp" class="dashboard-main"></section>
+<body class="roadmap-page">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="CarTuner home">
+      <span class="brand-gauge"></span>
+      <span>Car<em>Tuner</em></span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="index.html#planner">Planner</a>
+      <a href="#">Upgrades</a>
+      <a class="active" href="roadmap.html">Roadmaps</a>
+      <a href="#">Dyno</a>
+      <a href="#">Garage</a>
+      <a href="#">Community</a>
+    </nav>
+    <div class="header-actions">
+      <a class="garage-link" href="#">My Garage</a>
+      <button class="icon-button" type="button" aria-label="Notifications">!</button>
+      <button class="profile-button" type="button" aria-label="Profile">RT</button>
+    </div>
+  </header>
+
+  <main class="roadmap-shell">
+    <aside id="carPanel" class="car-card"></aside>
+
+    <section class="roadmap-stage" aria-labelledby="roadmapTitle">
+      <div class="windshield"></div>
+      <div class="roadmap-title">
+        <h1 id="roadmapTitle">Build Roadmap</h1>
+        <p id="roadmapIntro"></p>
+        <div class="roadmap-chips"><span>6 Stages</span><span>~8-10 Weeks</span></div>
+      </div>
+      <div id="progressBox" class="progress-card"></div>
+      <div id="stageRail" class="stage-rail"></div>
+      <div id="detailPanel" class="detail-panel"></div>
+      <div class="dashboard-logo">Car<em>Tuner</em></div>
+      <div class="cockpit-gauges">
+        <div><strong>S3</strong><span>Sport</span></div>
+        <div><strong>72</strong><span>MPH</span></div>
+      </div>
+    </section>
+
+    <section id="summaryStrip" class="summary-strip"></section>
   </main>
-  <script src="roadmap.js?v=20"></script>
+
+  <script src="roadmap.js?v=21"></script>
 </body>
 </html>
