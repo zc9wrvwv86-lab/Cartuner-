@@ -1,0 +1,1 @@
+.car-marker{width:120px!important;height:72px!important;background:transparent!important;border-radius:0!important;box-shadow:none!important}.car-marker img{width:120px!important;height:72px!important;object-fit:contain!important}.car-marker.driving{animation:carDrivePulse .9s ease!important}@keyframes carDrivePulse{50%{transform:translateX(18px) scale(1.08)}}
