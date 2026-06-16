@@ -4,65 +4,93 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CarTuner</title>
-  <link rel="stylesheet" href="styles.css?v=12" />
+  <link rel="stylesheet" href="styles.css?v=21" />
 </head>
-<body>
-  <main class="app">
-    <nav class="nav">
-      <div class="logo">Car<span>Tuner</span></div>
-      <a href="#planner">Plan</a>
-      <a href="#presets">Upgrades</a>
+<body class="home-page">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="CarTuner home">
+      <span class="brand-gauge"></span>
+      <span>Car<em>Tuner</em></span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a class="active" href="#planner">Planner</a>
+      <a href="#stats">Upgrades</a>
       <a href="roadmap.html">Roadmaps</a>
-      <a href="#presets">Dyno</a>
-      <a href="#presets">Garage</a>
-      <a href="#presets">Community</a>
-      <a class="garage-pill" href="#presets">My Garage</a>
+      <a href="#stats">Dyno</a>
+      <a href="#stats">Garage</a>
+      <a href="#stats">Community</a>
     </nav>
+    <div class="header-actions">
+      <a class="garage-link" href="#planner">My Garage</a>
+      <button class="icon-button" type="button" aria-label="Notifications">!</button>
+      <button class="profile-button" type="button" aria-label="Profile">RT</button>
+    </div>
+  </header>
 
-    <section class="hero">
-      <div class="hero-text">
-        <h1>Plan it.<br>Tune it.<br><span>Own the road.</span></h1>
-        <p>Map your build. Hit your goals.<br>Unleash your car’s full potential.</p>
-        <div class="enthusiast-badge">Built for enthusiasts</div>
-      </div>
-      <div class="hero-visual">
-        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80" alt="Selected car" />
-        <div class="floating-card"><strong>Selected Build</strong><span>Choose a car to update this preview.</span></div>
-      </div>
+  <main class="home-shell">
+    <section class="hero-copy" aria-labelledby="hero-title">
+      <h1 id="hero-title">Plan it.<br>Tune it.<br><span>Own the road.</span></h1>
+      <p>Map your build. Hit your goals.<br>Unleash your car's full potential.</p>
+      <div class="enthusiast-badge">Built for enthusiasts</div>
     </section>
 
-    <section id="planner" class="grid planner-only">
-      <form id="tuneForm" class="card form-card">
-        <p class="planner-kicker">/// Build Planner ///</p>
-        <h2>What’s the Build?</h2>
-        <p class="planner-copy">Tell us about your car and your goals. We’ll build the perfect tuning roadmap.</p>
-        <label>Brand<div class="autocomplete"><input id="make" placeholder="BMW, Audi, Volkswagen..." required /><div id="makeDropdown" class="dropdown"></div></div></label>
-        <label>Model<div class="autocomplete"><input id="model" placeholder="M340i, Golf GTI, RS3..." required /><div id="modelDropdown" class="dropdown"></div></div></label>
-        <label>Engine<div class="autocomplete"><input id="engine" placeholder="B58, EA888, EA855..." required /><div id="engineDropdown" class="dropdown"></div></div></label>
-        <div class="row">
-          <label>Base HP<input id="currentHp" type="number" value="250" min="50" required /></label>
-          <label>Target HP<input id="targetHp" type="number" value="350" min="60" required /></label>
-        </div>
-        <div class="row">
-          <label>Use case<select id="usage"><option value="daily">Daily Street</option><option value="weekend">Weekend</option><option value="track">Track</option><option value="show">Show</option></select></label>
-          <label>Fuel<select id="fuel"><option value="pump">Pump</option><option value="premium">93 Octane</option><option value="ethanol">Ethanol blend</option></select></label>
-        </div>
-        <button type="submit">Open Visual Roadmap →</button>
-        <p class="planner-foot">Personalized. Data-driven. Built for performance.</p>
+    <section id="planner" class="planner-card" aria-labelledby="planner-title">
+      <p class="planner-kicker">/// Build Planner ///</p>
+      <h2 id="planner-title">What's the build?</h2>
+      <p class="planner-copy">Tell us about your car and your goals.<br>We'll build the perfect <span>tuning roadmap.</span></p>
+
+      <form id="tuneForm" class="build-form">
+        <label class="field field-half">
+          <span>Brand</span>
+          <select id="make" required></select>
+        </label>
+        <label class="field field-half">
+          <span>Model</span>
+          <select id="model" required></select>
+        </label>
+        <label class="field field-wide">
+          <span>Engine</span>
+          <select id="engine" required></select>
+        </label>
+        <label class="field field-half">
+          <span>Base HP (WHP)</span>
+          <input id="currentHp" type="number" min="50" value="382" readonly />
+        </label>
+        <label class="field field-half field-accent">
+          <span>Target HP (WHP)</span>
+          <input id="targetHp" type="number" min="60" value="600" />
+        </label>
+        <label class="field field-half">
+          <span>Use case</span>
+          <select id="usage">
+            <option>Daily Street</option>
+            <option>Weekend</option>
+            <option>Track</option>
+            <option>Show</option>
+          </select>
+        </label>
+        <label class="field field-half">
+          <span>Fuel</span>
+          <select id="fuel">
+            <option>93 Octane</option>
+            <option>Pump</option>
+            <option>Ethanol Blend</option>
+          </select>
+        </label>
+        <button class="roadmap-button" type="submit">Open Visual Roadmap <span aria-hidden="true">-></span></button>
       </form>
-      <section id="results" class="card results" hidden></section>
+
+      <p class="planner-foot">Personalized. Data-driven. Built for performance.</p>
     </section>
 
-    <section class="stats">
+    <section id="stats" class="stats-bar" aria-label="CarTuner stats">
       <div><strong>500K+</strong><span>Builds Planned</span></div>
       <div><strong>10K+</strong><span>Parts & Upgrades</span></div>
+      <div><strong>Top Rated</strong><span>By Enthusiasts</span></div>
       <div><strong>Proven</strong><span>Data & Dyno Backed</span></div>
     </section>
-
-    <section id="presets" class="card"><h2>Popular car presets</h2><div id="presets" class="presets"></div></section>
-
-    <div id="modModal" class="modal"><div class="modal-box"><button id="closeModal" class="modal-close" type="button">×</button><img id="modalImage" src="" alt="Preview" /><h2 id="modalTitle"></h2><p id="modalText"></p><div class="modal-note">Check fitment and local rules before buying parts.</div></div></div>
   </main>
-  <script src="script.js?v=13"></script>
+
+  <script src="script.js?v=21"></script>
 </body>
 </html>
