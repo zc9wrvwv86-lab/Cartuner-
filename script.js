@@ -1,31 +1,61 @@
-function img(file){return `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(file)}`}
-const fallback="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=900&q=80";
 const cars=[
- {brand:"BMW",model:"M340i",engine:"B58",hp:382,target:500,type:"ice",image:img("2020_BMW_M340i_xDrive_in_Black_Sapphire_Metallic,_rear_left.jpg")},
- {brand:"Toyota",model:"GR Supra",engine:"B58",hp:382,target:550,type:"ice",image:img("2020_Toyota_GR_Supra_(United_States).png")},
- {brand:"Volkswagen",model:"Golf GTI",engine:"EA888",hp:241,target:350,type:"ice",image:img("VW_Golf_VI_GTI_front_20100711.jpg")},
- {brand:"Audi",model:"RS3",engine:"EA855",hp:401,target:560,type:"ice",image:"https://images.unsplash.com/photo-1606152421802-db97b9c7a11b?auto=format&fit=crop&w=900&q=80"},
- {brand:"Nissan",model:"GT-R",engine:"VR38DETT",hp:565,target:800,type:"ice",image:img("2018_Nissan_GT-R_Premium_in_Super_Silver,_Front_Right,_10-11-2022.jpg")},
- {brand:"Honda",model:"Civic Type R",engine:"K20C1",hp:306,target:420,type:"ice",image:img("2018_Honda_Civic_GT_Type_R_VTEC_2.0_Front.jpg")},
- {brand:"Ford",model:"Mustang GT",engine:"Coyote 5.0",hp:460,target:700,type:"ice",image:img("2019_Ford_Mustang_GT_5.0_facelift.jpg")},
- {brand:"Dodge",model:"Challenger Hellcat",engine:"Hellcat 6.2",hp:717,target:850,type:"ice",image:img("2015_HellCat.JPG")},
- {brand:"Tesla",model:"Model 3 Performance",engine:"Dual Motor EV",hp:450,target:450,type:"ev",image:"https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=900&q=80"}
+  {brand:"Toyota",model:"Supra",engine:"3.0L I6 Turbo (B58)",hp:382,target:600,torque:"368 LB-FT",image:"https://commons.wikimedia.org/wiki/Special:FilePath/2020_Toyota_GR_Supra_(United_States).png"},
+  {brand:"Volkswagen",model:"Golf GTI",engine:"EA888 Gen 3 2.0T",hp:241,target:350,torque:"273 LB-FT",image:"https://upload.wikimedia.org/wikipedia/commons/d/d8/Volkswagen_Golf_VIII_GTI_IMG_3604.jpg"},
+  {brand:"BMW",model:"M340i",engine:"B58",hp:382,target:500,torque:"369 LB-FT",image:"https://commons.wikimedia.org/wiki/Special:FilePath/2020_BMW_M340i_xDrive_in_Black_Sapphire_Metallic,_rear_left.jpg"},
+  {brand:"Audi",model:"RS3",engine:"EA855 2.5T",hp:401,target:560,torque:"369 LB-FT",image:"https://images.unsplash.com/photo-1606152421802-db97b9c7a11b?auto=format&fit=crop&w=1000&q=80"},
+  {brand:"Nissan",model:"GT-R",engine:"VR38DETT",hp:565,target:800,torque:"467 LB-FT",image:"https://commons.wikimedia.org/wiki/Special:FilePath/2018_Nissan_GT-R_Premium_in_Super_Silver,_Front_Right,_10-11-2022.jpg"},
+  {brand:"Honda",model:"Civic Type R",engine:"K20C1",hp:306,target:420,torque:"295 LB-FT",image:"https://commons.wikimedia.org/wiki/Special:FilePath/2018_Honda_Civic_GT_Type_R_VTEC_2.0_Front.jpg"}
 ];
-const brandInput=document.getElementById("make"),modelInput=document.getElementById("model"),engineInput=document.getElementById("engine"),baseInput=document.getElementById("currentHp"),targetInput=document.getElementById("targetHp"),form=document.getElementById("tuneForm"),presets=document.getElementById("presets"),results=document.getElementById("results"),heroImage=document.querySelector(".hero-visual img"),heroLabel=document.querySelector(".floating-card strong"),heroSub=document.querySelector(".floating-card span");
-function norm(v){return String(v||"").toLowerCase().replace(/[^a-z0-9]/g,"")}
-function safe(el){if(el)el.onerror=()=>{el.src=fallback}}
-function filteredModels(){const b=norm(brandInput.value);return [...new Set(cars.filter(c=>!b||norm(c.brand)===b).map(c=>c.model))]}
-function filteredEngines(){const b=norm(brandInput.value),m=norm(modelInput.value);return [...new Set(cars.filter(c=>(!b||norm(c.brand)===b)&&(!m||norm(c.model)===m)).map(c=>c.engine))]}
-function selectedCar(){return cars.find(c=>norm(c.brand)===norm(brandInput.value)&&norm(c.model)===norm(modelInput.value)&&norm(c.engine)===norm(engineInput.value))||cars.find(c=>norm(c.brand)===norm(brandInput.value)&&norm(c.model)===norm(modelInput.value))}
-function roadmapUrl(car,target){const p=new URLSearchParams({make:car.brand,model:car.model,engine:car.engine,currentHp:car.hp,targetHp:target||car.target});return `roadmap.html?${p}`}
-function optionsFor(id){if(id==="make")return [...new Set(cars.map(c=>c.brand))];if(id==="model")return filteredModels();return filteredEngines()}
-function updateHero(car){if(!car||!heroImage)return;heroImage.classList.add("switching");setTimeout(()=>{heroImage.src=car.image;safe(heroImage);heroImage.classList.remove("switching");if(heroLabel)heroLabel.textContent=`${car.brand} ${car.model}`;if(heroSub)heroSub.textContent=`${car.engine} · Base ${car.hp} HP · Target ${car.target} HP`;},130)}
-function ac(id,dropId){const input=document.getElementById(id),drop=document.getElementById(dropId);if(!input||!drop)return;function show(){const q=input.value.toLowerCase();drop.innerHTML="";optionsFor(id).filter(o=>o.toLowerCase().includes(q)).forEach(o=>{const d=document.createElement("div");d.className="dropdown-item";d.textContent=o;d.onmousedown=e=>{e.preventDefault();input.value=o;drop.classList.remove("show");input.dispatchEvent(new Event("change",{bubbles:true}))};drop.appendChild(d)});drop.classList.toggle("show",!!drop.children.length)}input.onfocus=show;input.oninput=show;document.addEventListener("click",e=>{if(!input.closest(".autocomplete")?.contains(e.target))drop.classList.remove("show")})}
-function note(){let n=document.getElementById("baseHpNote");if(!n){n=document.createElement("small");n.id="baseHpNote";n.className="base-hp-note";baseInput.insertAdjacentElement("afterend",n)}return n}
-function syncBase(){const car=selectedCar(),n=note();if(car){baseInput.value=car.hp;baseInput.readOnly=true;baseInput.classList.add("locked-hp");if(!targetInput.value||Number(targetInput.value)<=car.hp)targetInput.value=car.target;n.textContent=`Base HP: ${car.hp} HP for ${car.brand} ${car.model} ${car.engine}. Change target HP only.`;updateHero(car)}else{baseInput.readOnly=false;baseInput.classList.remove("locked-hp");n.textContent="Choose brand, model and engine to auto-fill base HP."}}
-function launchCar(){if(!heroImage)return;const car=document.createElement("img");car.className="launch-car";car.src=heroImage.src;car.alt="Launching car";car.style.cssText="position:fixed;left:8vw;bottom:18vh;width:260px;z-index:9999;pointer-events:none;filter:drop-shadow(0 0 26px rgba(236,72,153,.8))";document.body.appendChild(car);car.animate([{transform:"translate(0,0) scale(1)",opacity:1},{transform:"translate(70vw,-36vh) scale(.35)",opacity:0}],{duration:760,easing:"ease",fill:"forwards"});setTimeout(()=>car.remove(),900)}
-function openRoadmap(){const car=selectedCar()||{brand:brandInput.value,model:modelInput.value,engine:engineInput.value,hp:Number(baseInput.value),target:Number(targetInput.value),type:"ice"};launchCar();document.body.classList.add("launching-roadmap");setTimeout(()=>{location.href=roadmapUrl(car,Number(targetInput.value))},650)}
-function load(car){brandInput.value=car.brand;modelInput.value=car.model;engineInput.value=car.engine;baseInput.value=car.hp;targetInput.value=car.target;syncBase();updateHero(car)}
-function renderPresets(){if(!presets)return;presets.innerHTML="";cars.forEach(car=>{const b=document.createElement("button");b.type="button";b.className="preset preset-img";b.innerHTML=`<img src="${car.image}" alt="${car.brand} ${car.model}"><strong>${car.brand} ${car.model}</strong><p>${car.engine}: base ${car.hp} HP → target ${car.target} HP</p>`;b.onclick=()=>load(car);presets.appendChild(b);safe(b.querySelector("img"))})}
-brandInput?.addEventListener("change",()=>{modelInput.value="";engineInput.value="";syncBase()});modelInput?.addEventListener("change",()=>{engineInput.value="";syncBase()});engineInput?.addEventListener("change",syncBase);targetInput?.addEventListener("input",()=>{});
-ac("make","makeDropdown");ac("model","modelDropdown");ac("engine","engineDropdown");form?.addEventListener("submit",e=>{e.preventDefault();syncBase();openRoadmap()});if(results)results.hidden=true;renderPresets();note();load(cars[0]);
+
+const make=document.getElementById("make");
+const model=document.getElementById("model");
+const engine=document.getElementById("engine");
+const currentHp=document.getElementById("currentHp");
+const targetHp=document.getElementById("targetHp");
+const form=document.getElementById("tuneForm");
+
+function unique(values){return [...new Set(values)]}
+function option(value){const item=document.createElement("option");item.value=value;item.textContent=value;return item}
+function selectedCar(){
+  return cars.find(car=>car.brand===make.value&&car.model===model.value&&car.engine===engine.value)||cars[0];
+}
+function fillSelect(select,values,preferred){
+  select.innerHTML="";
+  values.forEach(value=>select.appendChild(option(value)));
+  select.value=values.includes(preferred)?preferred:values[0];
+}
+function syncModels(){
+  const available=cars.filter(car=>car.brand===make.value);
+  fillSelect(model,unique(available.map(car=>car.model)),model.value);
+  syncEngines();
+}
+function syncEngines(){
+  const available=cars.filter(car=>car.brand===make.value&&car.model===model.value);
+  fillSelect(engine,unique(available.map(car=>car.engine)),engine.value);
+  syncPower();
+}
+function syncPower(){
+  const car=selectedCar();
+  currentHp.value=car.hp;
+  if(!targetHp.value||Number(targetHp.value)<=car.hp) targetHp.value=car.target;
+}
+function openRoadmap(){
+  const car=selectedCar();
+  const params=new URLSearchParams({
+    make:car.brand,
+    model:car.model,
+    engine:car.engine,
+    currentHp:car.hp,
+    targetHp:Number(targetHp.value)||car.target,
+    torque:car.torque,
+    image:car.image
+  });
+  window.location.href=`roadmap.html?${params.toString()}`;
+}
+
+fillSelect(make,unique(cars.map(car=>car.brand)),"Toyota");
+syncModels();
+make.addEventListener("change",syncModels);
+model.addEventListener("change",syncEngines);
+engine.addEventListener("change",syncPower);
+form.addEventListener("submit",event=>{event.preventDefault();openRoadmap()});
