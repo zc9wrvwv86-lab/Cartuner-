@@ -12,9 +12,9 @@ html,body{margin:0;min-height:100%;font-family:Inter,Arial,sans-serif;color:#fff
 .header-actions{display:flex;align-items:center;gap:14px;min-width:260px;justify-content:flex-end}
 .garage-link{color:#fff;text-decoration:none;padding:12px 18px;border-radius:22px;border:1px solid rgba(255,255,255,.18);background:rgba(3,5,18,.42);font-weight:750}
 .icon-button,.profile-button{border:0;color:#fff;background:#15152a;font-weight:850}.icon-button{width:44px;height:44px;border-radius:50%}.profile-button{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#5122b7,#2b135f)}
-.roadmap-shell{min-height:calc(100vh - 78px);position:relative;padding:16px 24px 22px;background:linear-gradient(180deg,rgba(1,2,8,.18),rgba(1,2,8,.96)),url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=2200&q=88") center/cover no-repeat}
-.roadmap-shell:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 76% 25%,rgba(16,85,255,.22),transparent 20%),radial-gradient(circle at 58% 47%,rgba(255,20,147,.23),transparent 28%),linear-gradient(90deg,rgba(0,0,0,.68),transparent 28%,transparent 72%,rgba(0,0,0,.72))}
-.roadmap-shell:after{content:"";position:absolute;left:0;right:0;bottom:0;height:310px;background:radial-gradient(ellipse at center bottom,#02030a 0,#03030b 42%,transparent 72%);pointer-events:none}
+.roadmap-shell{min-height:calc(100vh - 78px);position:relative;padding:16px 24px 22px;background:#02030a}
+.roadmap-shell:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 76% 25%,rgba(16,85,255,.12),transparent 20%),linear-gradient(90deg,rgba(0,0,0,.28),transparent 28%,transparent 72%,rgba(0,0,0,.35))}
+.roadmap-shell:after{content:"";position:absolute;left:0;right:0;bottom:0;height:210px;background:linear-gradient(180deg,transparent,rgba(2,3,10,.72));pointer-events:none}
 .car-card{position:absolute;left:24px;top:16px;width:315px;min-height:424px;padding:22px;border-radius:14px;background:rgba(7,9,22,.82);border:1px solid rgba(255,255,255,.16);box-shadow:0 26px 80px rgba(0,0,0,.45);backdrop-filter:blur(18px);z-index:2}
 .car-card a{color:#f8fafc;text-decoration:none;font-weight:800}
 .vehicle-title{display:flex;align-items:center;gap:14px;margin:20px 0 12px}
@@ -25,10 +25,8 @@ html,body{margin:0;min-height:100%;font-family:Inter,Arial,sans-serif;color:#fff
 .power-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:end;margin:18px 0;padding-top:14px;border-top:1px solid rgba(255,255,255,.09)}
 .power-grid small{display:block;color:#aeb7c9;text-transform:uppercase;font-size:11px}.power-grid strong{font-size:17px}.power-grid .target strong{color:#ff1493}
 .summary-btn{width:100%;height:42px;border-radius:13px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);color:#fff;font-weight:850}
-.roadmap-stage{position:relative;min-height:760px;z-index:1;overflow:hidden}
-.windshield{position:absolute;left:22%;right:6%;top:0;bottom:158px;border-bottom:5px solid rgba(255,20,147,.72);clip-path:polygon(10% 0,92% 0,100% 88%,0 88%);background:linear-gradient(180deg,rgba(2,4,14,.05),rgba(2,4,14,.28))}
-.windshield:before{content:"";position:absolute;left:30%;right:26%;top:48px;height:76px;border-radius:0 0 58px 58px;border:1px solid rgba(255,20,147,.22);background:rgba(0,0,0,.32)}
-.windshield:after{content:"";position:absolute;left:38%;right:34%;top:140px;height:74px;border-radius:34px;border:2px solid rgba(255,20,147,.4);background:url("https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=900&q=80") center/cover no-repeat;box-shadow:0 0 34px rgba(255,20,147,.23)}
+.roadmap-stage{position:relative;min-height:760px;z-index:1;overflow:hidden;border-radius:0;background:linear-gradient(180deg,rgba(2,3,10,.04),rgba(2,3,10,.18)),url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=2400&q=90") center top/cover no-repeat}
+.windshield{display:none}
 .roadmap-title{position:absolute;left:352px;top:38px;z-index:3}
 .roadmap-title h1{margin:0 0 8px;font-size:34px}.roadmap-title h1:before{content:"///";margin-right:14px;color:#ff1493}
 .roadmap-title p{margin:0 0 18px;color:#f3f5fb;font-size:17px;line-height:1.4}
@@ -48,8 +46,7 @@ html,body{margin:0;min-height:100%;font-family:Inter,Arial,sans-serif;color:#fff
 .detail-panel{position:absolute;right:40px;bottom:132px;z-index:4;width:min(690px,46vw);min-height:146px;display:grid;grid-template-columns:1fr 1.3fr .7fr;gap:18px;padding:18px 20px;border-radius:13px;background:rgba(9,11,25,.86);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(16px)}
 .detail-panel h2{margin:0 0 12px;font-size:22px}.detail-panel h2 span{display:inline-grid;place-items:center;width:40px;height:40px;margin-right:10px;border-radius:7px;background:#ff1493}
 .detail-panel p{margin:0;color:#cfd5e3;font-size:13px;line-height:1.55}.checks{display:grid;grid-template-columns:1fr 1fr;gap:12px}.checks span{font-size:13px;color:#cfd5e3}.checks span:before{content:"◎";margin-right:8px;color:#ff1493}.detail-time{border-left:1px solid rgba(255,255,255,.12);padding-left:18px}.detail-time small{color:#aeb7c9;text-transform:uppercase}.detail-time strong{display:block;margin:8px 0 16px;font-size:20px}.detail-time button{border:0;border-radius:9px;padding:13px 18px;background:linear-gradient(90deg,#ff1493,#ff7a2f);color:#fff;font-weight:950}
-.dashboard-logo{position:absolute;left:43%;bottom:112px;z-index:3;font-size:28px;font-weight:950}.dashboard-logo:before{content:"◔";margin-right:8px}.dashboard-logo em{font-style:italic;color:#ff1493}
-.cockpit-gauges{position:absolute;left:140px;bottom:66px;z-index:3;display:flex;gap:20px}.cockpit-gauges div{width:92px;height:92px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,#121225 48%,transparent 50%),conic-gradient(#ff1493,#fff,#ff1493);box-shadow:0 0 22px rgba(255,20,147,.2)}.cockpit-gauges strong{font-size:26px}.cockpit-gauges span{margin-top:-24px;color:#ff5cae;text-transform:uppercase;font-size:10px}
+.dashboard-logo,.cockpit-gauges{display:none}
 .summary-strip{position:relative;z-index:4;display:grid;grid-template-columns:repeat(4,1fr);max-width:1258px;margin:-76px auto 0;border-radius:16px;background:rgba(9,11,25,.86);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(18px);box-shadow:0 25px 70px rgba(0,0,0,.42)}
 .summary-strip div{min-height:86px;padding:20px 28px;border-right:1px solid rgba(255,255,255,.12)}.summary-strip div:last-child{border-right:0}.summary-strip small{display:block;color:#aeb7c9;text-transform:uppercase}.summary-strip strong{display:block;margin-top:6px;font-size:19px}
 @media(max-width:1320px){.stage-rail{left:350px;right:24px;transform:scale(.86);transform-origin:left top}.detail-panel{width:52vw}.stage-card:nth-child(6){left:820px}}
