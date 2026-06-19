@@ -1,0 +1,93 @@
+body.home-page:before{
+  background:
+    linear-gradient(90deg,rgba(1,2,9,.92) 0%,rgba(1,2,9,.8) 28%,rgba(3,4,13,.38) 46%,rgba(3,4,13,.08) 68%,rgba(1,2,9,.16) 100%),
+    linear-gradient(180deg,rgba(1,2,9,.5) 0%,rgba(1,2,9,.08) 38%,rgba(1,2,9,.78) 100%),
+    url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=2400&q=90") right center/cover no-repeat!important;
+  filter:saturate(1.28) contrast(1.1)!important;
+}
+
+body.home-page:after{
+  background:
+    linear-gradient(90deg,rgba(1,2,9,.78) 0%,rgba(1,2,9,.58) 24%,rgba(1,2,9,.2) 42%,transparent 58%),
+    radial-gradient(circle at 80% 30%,rgba(56,189,248,.22),transparent 24%),
+    radial-gradient(circle at 30% 76%,rgba(255,20,147,.26),transparent 34%),
+    linear-gradient(180deg,rgba(1,2,8,.02),rgba(1,2,8,.76) 100%)!important;
+}
+
+.home-shell:before{
+  height:42vh!important;
+  bottom:-7vh!important;
+  opacity:1!important;
+}
+
+.hero-car-visual{
+  left:5.4vw!important;
+  bottom:6.2vh!important;
+  width:min(760px,43vw)!important;
+  height:min(410px,42vh)!important;
+  perspective:980px;
+}
+
+.hero-car-visual img{
+  transform-origin:left bottom;
+  will-change:transform;
+}
+
+.hero-car-visual[data-slug="bmw-m340i"]{
+  left:5.8vw!important;
+  bottom:5.7vh!important;
+  width:min(630px,37vw)!important;
+}
+
+.hero-car-visual[data-slug="bmw-m340i"] img{
+  transform:perspective(980px) rotateY(-18deg) rotateZ(-1.4deg) translateX(-5%) scale(1.01);
+}
+
+.hero-car-visual[data-slug="nissan-gt-r"]{
+  left:5.1vw!important;
+  bottom:5.4vh!important;
+  width:min(650px,38vw)!important;
+}
+
+.hero-car-visual[data-slug="nissan-gt-r"] img{
+  transform:perspective(980px) rotateY(-23deg) rotateZ(-2.1deg) translateX(-7%) scale(1.02);
+}
+
+.hero-car-visual[data-slug="porsche-911-turbo-s"]{
+  left:5.2vw!important;
+  bottom:5.8vh!important;
+  width:min(660px,39vw)!important;
+}
+
+.hero-car-visual[data-slug="porsche-911-turbo-s"] img{
+  transform:perspective(1040px) rotateY(-20deg) rotateZ(-1.2deg) translateX(-7%) scale(1.05);
+  filter:drop-shadow(0 0 26px rgba(255,20,147,.38)) drop-shadow(0 34px 64px rgba(0,0,0,.92)) saturate(1.2) contrast(1.1) brightness(.88)!important;
+}
+
+.hero-car-visual[data-slug="mercedes-amg-c63-s"]{
+  left:5.6vw!important;
+  bottom:5.8vh!important;
+  width:min(610px,36vw)!important;
+}
+
+.hero-car-visual[data-slug="mercedes-amg-c63-s"] img{
+  transform:perspective(980px) rotateY(-19deg) rotateZ(-1.8deg) translateX(-6%) scale(1.04);
+}
+
+@media(max-width:1180px){
+  .hero-car-visual{
+    left:-18vw!important;
+    bottom:auto!important;
+    width:min(760px,86vw)!important;
+    height:300px!important;
+  }
+}
+
+@media(max-width:720px){
+  body.home-page:before{background-position:54% center!important}
+  .hero-car-visual{
+    left:-30vw!important;
+    width:116vw!important;
+    height:230px!important;
+  }
+}
